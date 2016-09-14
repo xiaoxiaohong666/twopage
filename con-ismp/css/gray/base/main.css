@@ -1,0 +1,168 @@
+
+*{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    box-sizing: border-box;
+}
+a,img{
+    border:0;
+}
+body{
+    line-height:2em;
+    background-color:#ffffff;
+    font-family:arial, helvetica, sans-serif;
+    color:#666666;
+    font-size:12px;
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    color:#3175b8;
+    text-decoration:underline;
+}
+
+/* nav */
+.nav{
+    position:fixed;
+    left:50%;
+    margin-left:-100px;
+    z-index:9999;
+    width:190px;
+}
+.nav .allbtn{
+    z-index:99999;
+    position:relative;
+}
+.nav .allbtn h2{
+    font-size:14px;
+    box-shadow:2px 0px 6px -3px #428000;
+    -webkit-box-shadow:2px 0px 6px -3px #428000;
+    -moz-box-shadow:2px 0px 6px -3px #428000;
+}
+.nav .allbtn h2 a{
+    line-height:30px;
+    background-color:#3d3d3d;
+    padding-left:10px;
+    display:block;
+    font-family:微软雅黑, 黑体;
+    height:30px;
+    color:#ffffff;
+    font-size:14px;
+    font-weight:normal;
+}
+.nav .allbtn h2 a:hover{
+    background-color: #dad0c8;
+    text-decoration:none;
+}
+.nav .allbtn .box{
+    z-index:99999;
+    position:absolute;
+    background-color:#dddddd;
+    width:190px;
+    display:none;
+    height:486px;
+    top:30px;
+    left:0px
+}
+.nav .allbtn .box li{
+    padding-bottom:7px;
+    zoom:1;
+    clear:both;
+    cursor:default;
+}
+.nav .allbtn .box li .tx{
+    line-height:35px;
+    background-color:#3d3d3d;
+    padding-left:15px;
+   height:35px;
+}
+.nav .allbtn .box li .tx a{
+    font-family:微软雅黑, 黑体;
+    color:#ffffff;
+    font-size:14px;
+    -webkit-transition:color 0.5s ease-out 0s;
+    -moz-transition:color 0.5s ease-out 0s;
+    -ms-transition:color 0.5s ease-out 0s;
+    -o-transition:color 0.5s ease-out 0s;
+    transition:color 0.5s ease-out 0s;
+}
+.nav .allbtn .box li .pop{
+    border-bottom:#0557a9 2px solid;
+    position:absolute;
+    border-left:medium none;
+    padding-bottom:10px;
+    background-color:#fcfcfc;
+    padding-left:30px;
+    width:340px;
+    padding-right:30px;
+    display:none;
+    height:464px;
+    top:0px;
+    border-right:#0557a9 2px solid;
+    padding-top:10px;
+    left:190px;
+    box-shadow:4px 4px 5px -1px #999999;
+    -webkit-box-shadow:4px 4px 5px -1px #999999;
+    -moz-box-shadow:4px 4px 5px -1px #999999;
+}
+.nav .allbtn:hover .box{
+    display:block;
+}
+.nav .allbtn .box li:hover{
+    background-color:#fcfcfc;
+}
+.nav .allbtn .box li:hover .tx{
+    background-color:#f5f5f5;
+}
+.nav .allbtn .box li:hover .tx a{
+    color:#333333;
+}
+.nav .allbtn .box li:hover .pop{
+    display:block;
+    top:0px;
+    left:190px;
+}
+.nav .allbtn .box li:hover a{
+    color:#666666;
+}
+.nav .allbtn .box li:hover a:hover{
+    color:#cd0606;
+}
+.MonitorDetail{
+    border:1px solid #4d4d4d;
+    border-top:none;
+}
+.MD2{
+    border-left:0;
+    border-right:0;
+}
+.MonitorDetailRight{
+    height:33%;
+    border-bottom:1px solid #4d4d4d;
+}
+.MonitorDetailMiddle{
+    height:46%;
+    border-bottom:1px solid #4d4d4d;
+}
+.MonitorButton{
+    width:100px;
+    height:28px;
+    margin:3px 7px;
+    background:#fff;
+}
+.monitorname,.MonitorTableDetail{
+    width:99%;
+    margin:30px 3px 0 3px;
+    text-align:center;
+}
+.monitorname tr td{
+    height:38px;
+}
+.MonitorTableDetail tr td:first-child{
+   text-align:left;
+}
+.MonitorTableDetail th{
+    background:#d7d7d7;
+}

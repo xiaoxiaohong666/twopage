@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link rel="stylesheet" href="../../../css/blue/base/pagebody.css"/>
+    <link rel="stylesheet" href="../../../css/blue/tree.css"/>
+    <link rel="stylesheet" href="../../../css/gray/base/main.css"/>
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../tool/My97DatePicker/WdatePicker.js"></script>
+    <title>功能主页面</title>
+</head>
+<style>
+    .monitora{
+        display:inline-block;
+        border:1px solid #4d4d4d;
+        width:90px;
+        height:30px;
+        line-height:29px;
+        margin-left:5px;
+        cursor: pointer;
+        text-align: center;
+        background:#fff;
+        border-bottom:none;
+    }
+</style>
+<script>
+    function menujson(Numb){
+        var cmenus = [
+            {'id':'100','name':'报表中心','href':'#',
+                'children':[
+                    {"id":'101',"name":'客户日数据','href':'media/appexternal/reportrecday.html'},
+                    {"id":'102',"name":'媒体日数据','href':'media/appexternal/reportresday.html'},
+                    {"id":'103',"name":'客户实时数据','href':'media/appexternal/CustomersRealtimeReports.html'},
+                    {"id":'104',"name":'媒体实时数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'105',"name":'流量日数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'106',"name":'流量实时数据','href':'media/appexternal/MediaRealtimeReports.html'}
+                ]},
+            {"id":"200","name":"媒体管理","href":"#",
+                "children":[{"id":"201","name":"应用审核","href":"media/appaudit/page.html"},
+                    {"id":"202","name":"ad采购报价","href":"media/appaudit/buyprice.html"},
+                    {"id":"203","name":"ad销售报价","href":"media/appaudit/sellprice.html"},
+                    {"id":"204","name":"ad对接留档","href":"media/appaudit/butt.html"},
+                    {"id":"205","name":"应用管理","href":"media/appexternal/page.html"},
+                    {"id":"206","name":"广告位管理","href":"media/appaudit/adpage.html"}]},
+            {"id":"300","name":"客户管理","href":"#",
+                "children":[{"id":"301","name":"内部普通订单","href":"media/appinterior/internalorder.html"},
+                    {"id":"302","name":"内部余量订单","href":"media/appinterior/remnantorder.html"},
+                    {"id":"303","name":"客户订单","href":"media/appinterior/customerorder.html"},
+                    {"id":"304","name":"广告测试","href":"media/appinterior/adstest.html"}]},
+            {"id":"400","name":"运营中心","href":"#",
+                "children":[{"id":"401","name":"监控","href":"media/operation/monitoring.html"},
+                    {"id":"402","name":"PMP多维报表","href":"#"},
+                    {"id":"403","name":"SSP多维报表","href":'#'},
+                    {"id":"403","name":"运营流量报表","href":'#'},
+                    {"id":"403","name":"运营UV报表","href":'#'}
+                ]},
+            {"id":"500","name":"结算中心","href":"#",
+                "children":[{"id":"501","name":"日结算数据","href":"#"},
+                    {"id":"502","name":"媒体结算","href":"#"},
+                    {"id":"503","name":"客户结算","href":'#'}]},
+            {"id":"600","name":"财务管理","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"}]},
+            {"id":"700","name":"平台用户","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"media/userplatform/userplatform.html"},
+                    {"id":"602","name":"媒体用户","href":"media/userplatform/usermedia.html"},
+                    {"id":"603","name":"客户管理","href":"media/userplatform/userclient.html"}
+                ]},
+            {"id":"800","name":"信息管理","href":"#",
+                "children":[{"id":"801","name":"留言板","href":"#"},
+                    {"id":"802","name":"信息公告","href":"#"},
+                    {"id":"803","name":"新手帮助","href":"#"},
+                    {"id":"805","name":"服务条款","href":"#"},
+                    {"id":"805","name":"SDK附件","href":"media/infomanage/sdkadjunct.html"}
+                ]},
+            {"id":"900","name":"基础信息","href":"#",
+                "children":[{"id":"901","name":"系统参数","href":"media/baseinfo/ststmargue.html"},
+                    {"id":"902","name":"投放地区","href":"media/baseinfo/putarea.html"},
+                    {"id":"903","name":"数据字典","href":"#"},
+                    {"id":"905","name":"内部职务","href":"#"},
+                    {"id":"905","name":"媒体分类","href":"#"}
+                ]},
+            {"id":"1000","name":"系统管理","href":"#",
+                "children":[{"id":"1001","name":"功能菜单","href":"#"},
+                    {"id":"1002","name":"人员组织","href":"#"},
+                    {"id":"1003","name":"菜单权限","href":"#"},
+                    {"id":"1005","name":"数据权限","href":"#"},
+                    {"id":"1002","name":"系统日志","href":"#"},
+                    {"id":"1003","name":"操作日志","href":"#"}
+                ]}
+
+
+        ];
+        var nav=$(".box" );
+
+        for(var i=0;i<cmenus.length;i++){
+
+            var htmlval='';
+            htmlval =  "<li>"+" <div class='tx'>"+"<a href=''>"+cmenus[i].name+"</a>"+"</div>";
+
+            var childrenval = "";
+            for( var j=0;j<cmenus[i].children.length;j++){
+                if(Numb==1){
+                    childrenval+="<li>"+"<a href='"+'../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==2){
+                    childrenval+="<li>"+"<a href='"+'../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==3){
+                    childrenval+="<li>"+"<a href='"+'../../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+
+            }
+            htmlval = htmlval+"<div class='pop'>"+"<ul>" +childrenval+"</ul>"+"</div>"+"</li>";
+
+            nav.append(htmlval);
+        }
+
+    }
+
+</script>
+<script>
+    $(document).ready(function(){
+        menujson(2);
+        var bigheight= $(window).height();
+        $(".bigone,.bigtwo,.bigthree,.MonitorDetail").height(bigheight-35);
+    })
+</script>
+<body>
+<div class="nav">
+    <div class="allbtn">
+        <h2 class="buttonback"><a href="#">回</a></h2>
+        <ul style="width:190px" class="box">
+            <!--<li>-->
+                <!--<div class='tx'><a href="#">报表中心</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<a href="#">媒体报表</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">客户报表</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">内部报表</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">阳狮流量报表</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">阳狮uv报表</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">媒体管理</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">应用审核</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">ad采购报价</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">ad销售报价</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">ad对接留档</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">应用管理</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">广告位管理</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">订单管理</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">文本订单</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">内部普通订单</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">内部余量订单</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">客户订单</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">广告测试</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">运营中心</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">监控</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">平台用户</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">内部员工</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">媒体用户</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">客户管理</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">信息管理</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">留言板</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">信息公告</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">新手帮助</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">服务条款</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">SDK附件</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">信息管理</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">留言板</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">信息公告</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">新手帮助</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">服务条款</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">SDK附件</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">基础信息</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">系统参数</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">投放地区</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">数据字典</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">内部职位</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">媒体分类</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class='tx'><a href="">系统管理</a> </div>-->
+                <!--<div class='pop'>-->
+                    <!--<ul style="float:left;">-->
+                        <!--<li>-->
+                            <!--<a href="#">功能菜单</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">人员组织</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">菜单权限</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">数据权限</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">系统日志</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">操作日志</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<div style="width:100%;height:30px;min-width:500px;">
+    <a name="a" class="monitora" onclick="show(1,this)" style="height:31px;border-bottom:0;">买量客户</a>
+    <a name="a" class="monitora" onclick="show(2,this)">日流量流出</a>
+    <a name="a" class="monitora rf" onclick="show(3,this)" style="margin-right:5px;">放量媒体</a>
+    <a name="a" class="monitora rf" onclick="show(4,this)">日流量流入</a>
+</div>
+<div>
+    <div id="d1" name="dv" class="bigone" style="display:block;margin:0 5px;border-top:1px solid #4d4d4d;">
+        <div  class="lf MonitorDetail" style="width:30%;">
+            <div style="border-bottom:1px solid #2f73b9">
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">类型</td>
+                        <td width="30%">
+                            <select name="">
+                                <option value="">正常数据</option>
+                            </select>
+                        </td>
+                        <td width="20%">日期</td>
+                        <td><input type="text" size="15"  class="Wdate" onfocus="WdatePicker()"/></td>
+                    </tr>
+                </table>
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">客户名称</td>
+                        <td width="30%"><input type="text" size="15"/></td>
+                        <td width="20%">订单名称</td>
+                        <td><input type="text" size="15"/></td>
+                    </tr>
+                    <tr>
+                        <td>策略名称</td>
+                        <td><input type="text" size="15"/></td>
+                        <td>广告位</td>
+                        <td><input type="text" size="15"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button>查询</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="border-bottom:0">
+                    <tr>
+                        <th width="50%" style="text-align:left">客户-订单-策略-广告位</th>
+                        <th width="20%">级别</th>
+                        <th width="20%">类型</th>
+                        <th width="10%"></th>
+                    </tr>
+                    <tr>
+                        <td><span class="icon_1" onclick="Click(this)"></span>王亮</td>
+                        <td>1客户</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>测试</td>
+                        <td>2订单</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this)"></span>>测试</td>
+                        <td>3策略</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_2"></span><span class="icon_3"></span>Andriod-开屏赚-开屏广告</td>
+                        <td>4广告位</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="margin-top:0">
+                    <tr>
+                        <td width="50%"><span class="icon_1" onclick="Click(this)"></span>周涛</td>
+                        <td width="20%">1客户</td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>测试</td>
+                        <td>2订单</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this)"></span>>测试</td>
+                        <td>3策略</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_2"></span><span class="icon_3"></span>Andriod-开屏赚-开屏广告</td>
+                        <td>4广告位</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail MD2" style="width:40%;">
+            <div class="MonitorDetailMiddle" style="height:35px;text-align:center;overflow-x: hidden;">
+                <button class="MonitorButton">运行</button><button class="MonitorButton">暂停</button><button class="MonitorButton">排期调整</button><button class="MonitorButton">延后补量</button><button class="MonitorButton">素材调整</button>
+            </div>
+            <div class="MonitorDetailMiddle">
+               <h4> 策略-广告位排期 应用-广告位排期</h4>
+            </div>
+            <div class="MonitorDetailMiddle" style="border-bottom:none;">
+               <h4>
+                   应用-广告位素材 策略-广告位素材
+               </h4>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail" style="width:30%;height:100%;">
+            <div class="MonitorDetailRight">
+                <h4>广告位信息 </h4>
+            </div>
+            <div class="MonitorDetailRight">
+                <h4>互斥排期</h4>
+            </div>
+            <div class="MonitorDetailRight" style="border-bottom:none;">
+                <h4>互斥创意 </h4>
+            </div>
+        </div>
+    </div>
+    <div id="d2" name="dv" class="bigtwo" style="display:none;border:1px solid #4d4d4d">我是黄色的div</div>
+    <div id="d3" name="dv" class="bigthree" style="display:none;border:1px solid #4d4d4d;margin:0 5px;border-left:none;border-right:none;">
+        <div  class="lf MonitorDetail" style="width:30%;">
+            <div style="border-bottom:1px solid #2f73b9">
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">类型</td>
+                        <td width="30%">
+                            <select name="" id="">
+                                <option value="">正常数据</option>
+                            </select>
+                        </td>
+                        <td width="20%">日期</td>
+                        <td><input type="text" size="15" class="Wdate" onfocus="WdatePicker()"/></td>
+                    </tr>
+                </table>
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">客户名称</td>
+                        <td width="30%"><input type="text" size="15"/></td>
+                        <td width="20%">订单名称</td>
+                        <td><input type="text" size="15"/></td>
+                    </tr>
+                    <tr>
+                        <td>策略名称</td>
+                        <td><input type="text" size="15"/></td>
+                        <td>广告位</td>
+                        <td><input type="text" size="15"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button>查询</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="border-bottom:0">
+                    <tr>
+                        <th width="50%" style="text-align:left">媒体-应用-广告位</th>
+                        <th width="20%">级别</th>
+                        <th width="20%">类型</th>
+                        <th width="10%"></th>
+                    </tr>
+                    <tr>
+                        <td><span class="icon_1" onclick="Click(this)"></span>深圳市微屏互动信息技术有限公司</td>
+                        <td>1媒体</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>Andriod-开屏赚</td>
+                        <td>2应用</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_1"></span><span class="icon_3" onclick="Click(this)"></span>>Andriod-开屏赚-开屏广告</td>
+                        <td>3广告位</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="margin-top:0">
+                    <tr>
+                        <td width="50%"><span class="icon_1" onclick="Click(this)"></span>黄样</td>
+                        <td width="20%">1媒体</td>
+                        <td width="20%"></td>
+                        <td width="10%"></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>IOS-环球</td>
+                        <td>2应用</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong_1"></span><span class="icon_3" onclick="Click(this)"></span>IOS-环球-环球ios-banner</td>
+                        <td>3广告位</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail MD2" style="width:40%;">
+            <div class="MonitorDetailMiddle" style="height:35px;text-align:center;overflow-x: hidden;">
+                <button class="MonitorButton">运行</button><button class="MonitorButton">暂停</button><button class="MonitorButton">排期调整</button><button class="MonitorButton">延后补量</button><button class="MonitorButton">素材调整</button>
+            </div>
+            <div class="MonitorDetailMiddle">
+                <h4> 策略-广告位排期 应用-广告位排期</h4>
+            </div>
+            <div class="MonitorDetailMiddle" style="border-bottom:none;">
+                <h4>
+                    应用-广告位素材 策略-广告位素材
+                </h4>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail" style="width:30%;height:100%;">
+            <div class="MonitorDetailRight">
+                <h4>广告位信息 </h4>
+            </div>
+            <div class="MonitorDetailRight">
+                <h4>互斥排期</h4>
+            </div>
+            <div class="MonitorDetailRight" style="border-bottom:none;">
+                <h4>互斥创意 </h4>
+            </div>
+        </div>
+    </div>
+    <div id="d4" name="dv" class="bigthree" style=" width:100%;display:none;border:1px solid #4d4d4d">我是绿色的div</div>
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+
+    })
+</script>
+<script>
+    function Click(a){
+        if($(a).is(".icon_1")){
+            $(a).removeClass('icon_1').addClass('icon_2');
+            $(a).parent().parent().next().show();
+        }else{
+            $(a).removeClass('icon_2').addClass('icon_1');
+            $(a).parent().parent().nextAll().hide();
+        }
+
+    }
+    function show(id,arr){
+        var as=document.getElementsByName('a');
+        $(as).css('height','30px');
+        $(arr).height(30).css("border-bottom","none");
+        var divs = document.getElementsByName("dv");
+        for (var i = 0 ; i < divs.length ; i++){
+            if (divs[i].id == "d"+id ){
+                divs[i].style.display="";
+            }else{
+                divs[i].style.display="none"
+            }
+        }
+    }
+</script>
+</html>
