@@ -22,16 +22,16 @@
             jQuery("#allcheck").click(function(){
                 jQuery("input[name=id]").prop("checked",jQuery("#allcheck").prop("checked"));
             });
-            var jsondata = [{id: 1, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:""},
-                {id: 2, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:""},
-                {id: 3, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:""},
-                {id: 4, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:""},
-                {id: 5, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:""},
-                {id: 6, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:" "},
-                {id: 7, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:" "},
-                {id: 8, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:" "},
-                {id: 9, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:" "},
-                {id: 10, code:"input", name: "安卓-网易新闻", garden: "Android", time: "2016-02-02",money:"0.0", state:"正常",handle:" "}
+            var jsondata = [{id: 1, code:"input", name: "安卓-网易新闻", garden: "九月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:""},
+                {id: 2, code:"input", name: "宝马", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:""},
+                {id: 3, code:"input", name: "苏宁", garden: "九月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:""},
+                {id: 4, code:"input", name: "天猫", garden: "九月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:""},
+                {id: 5, code:"input", name: "德芙", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:""},
+                {id: 6, code:"input", name: "美咖", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:" "},
+                {id: 7, code:"input", name: "宝马", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:" "},
+                {id: 8, code:"input", name: "德芙", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:" "},
+                {id: 9, code:"input", name: "苏宁", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:" "},
+                {id: 10, code:"input", name: "德芙", garden: "十月订单", time: "2016-10-09",money:"0.0", state:"正常",handle:" "}
             ];
             var table = $('#tablekey');
             //  alert(jsondata.length);
@@ -203,18 +203,17 @@
                         <td >
                             <select style="width:200px" name="" class="SearchSelect">
                                 <option value="">-全部-</option>
-                                <option value="">阿泰</option>
-                                <option value="">meika</option>
-                                <option value="">大功率的牛</option>
+                                <option value="">已审核</option>
+                                <option value="">未审核</option>
                             </select>
                         </td>
                         <td width="100px" align="right"> 选择客户：</td>
                         <td>
                             <select style="width:200px" name="" class="SearchSelect">
-                                <option value="">1</option>
-                                <option value="">项目1</option>
-                                <option value="">项目2</option>
-                                <option value="">项目3</option>
+                                <option value="">宝马</option>
+                                <option value="">爱奇艺</option>
+                                <option value="">百度</option>
+                                <option value="">美咖</option>
                             </select>
                         </td>
                     </tr>

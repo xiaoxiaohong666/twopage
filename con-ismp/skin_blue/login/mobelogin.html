@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="../../css/blue/base/mobelogin.css"/>
+    <script src="../../js/jquery-1.11.3.js"></script>
+    <script>
+        function sub(){
+            var key = true;
+            var username = $(".username").val();
+            if(username==""||username==null){
+                key = false;
+                $(".username").next().show();
+            }
+            var userpassword = $(".userpassword").val();
+            if(userpassword==""||userpassword==null){
+                key = false;
+                $(".userpassword").next().show();
+            }
+            var testcode = $(".testcode").val();
+            if(testcode==""||testcode==null){
+                key = false;
+                $(".testcode").next().show();
+            }
+            if(key){
+                  window.location.href="welcome.html";
+            }
+        }
+        $(document).ready(function(){
+            $(".username,.userpassword,.testcode").focus(function(){
+                $(this).next().hide();
+            })
+        })
+    </script>
+</head>
+<body>
+<section class="wrap">
+    <div class="WrapWordOut"><h1 class="WrapWord">专注互联网</h1></div>
+    <div>
+        <p class="WrapInner">
+            <label class="username_img"></label>
+            <input type="text" class="username" placeholder="用户名"/>
+            <span class="waring">请输入用户名</span>
+        </p>
+
+        <p class="WrapInner">
+            <label class="userpassword_img"></label>
+            <input type="password" class="userpassword" placeholder="密码"/>
+            <span class="waring">请输入密码</span>
+        </p>
+
+        <p class="WrapInner">
+            <label class="testcode_img"></label>
+            <input type="text" placeholder="验证码" class="testcode"/>
+            <span class="waring">请输入验证码</span>
+            <img src="" alt="图片"/>
+        </p>
+
+        <p class="WrapInner">
+            <label>记住用户名</label>
+            <input type="checkbox"/>
+        </p>
+
+        <p class="WrapInner">
+            <input type="submit" class="Login" onclick="sub()" value="登录"/>
+        </p>
+
+        <p class="WrapInner">
+            <a href="" class="fl">忘记密码？</a>
+            <a href="mobileregister.html" class="fr">立即注册</a>
+        </p>
+    </div>
+</section>
+</body>
+</html>

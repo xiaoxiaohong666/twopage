@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link rel="stylesheet" href="../../../css/blue/base/pagebody.css"/>
+    <link rel="stylesheet" href="../../../css/blue/tree.css"/>
+    <link rel="stylesheet" href="../../../css/blue/base/main.css"/>
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../js/layer/layer.js"></script>
+    <script src="../../../tool/My97DatePicker/WdatePicker.js"></script>
+    <title>功能主页面</title>
+</head>
+<style>
+    .monitora{
+        display:inline-block;
+        border:1px solid #2f73b9;
+        width:90px;
+        height:30px;
+        line-height:29px;
+        margin-left:5px;
+        cursor: pointer;
+        text-align: center;
+        background:#fff;
+        border-bottom:none;
+    }
+    select{
+        width:90%;
+    }
+    body .demo-class .layui-layer-title{background:#4476A7; color:#fff; border: none;}
+</style>
+<script>
+    function menujson(Numb){
+        var cmenus = [
+            {'id':'100','name':'报表中心','href':'#',
+                'children':[
+                    {"id":'101',"name":'客户日数据','href':'media/appexternal/reportrecday.html'},
+                    {"id":'102',"name":'媒体日数据','href':'media/appexternal/reportresday.html'},
+                    {"id":'103',"name":'客户实时数据','href':'media/appexternal/CustomersRealtimeReports.html'},
+                    {"id":'104',"name":'媒体实时数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'105',"name":'流量日数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'106',"name":'流量实时数据','href':'media/appexternal/MediaRealtimeReports.html'}
+                ]},
+            {"id":"200","name":"媒体管理","href":"#",
+                "children":[{"id":"201","name":"应用审核","href":"media/appaudit/page.html"},
+                    {"id":"202","name":"ad采购报价","href":"media/appaudit/buyprice.html"},
+                    {"id":"203","name":"ad销售报价","href":"media/appaudit/sellprice.html"},
+                    {"id":"204","name":"ad对接留档","href":"media/appaudit/butt.html"},
+                    {"id":"205","name":"应用管理","href":"media/appexternal/page.html"},
+                    {"id":"206","name":"广告位管理","href":"media/appaudit/adpage.html"},
+                    {"id":'207',"name":'客户报价','href':'media/operation/client_quote.html'}
+                ]},
+            {"id":"300","name":"客户管理","href":"#",
+                "children":[{"id":"301","name":"内部普通订单","href":"media/appinterior/internalorder.html"},
+                    {"id":"302","name":"内部余量订单","href":"media/appinterior/remnantorder.html"},
+                    {"id":"303","name":"客户订单","href":"media/appinterior/customerorder.html"},
+                    {"id":"304","name":"广告测试","href":"media/appinterior/adstest.html"}]},
+            {"id":"400","name":"运营中心","href":"#",
+                "children":[{"id":"401","name":"监控","href":"media/operation/monitoring.html"},
+                    {"id":"402","name":"PMP多维报表","href":"#"},
+                    {"id":"403","name":"SSP多维报表","href":'#'},
+                    {"id":"403","name":"运营流量报表","href":'#'},
+                    {"id":"403","name":"运营UV报表","href":'#'}
+                ]},
+            {"id":"500","name":"结算中心","href":"#",
+                "children":[{"id":"501","name":"日结算数据","href":"#"},
+                    {"id":"502","name":"媒体结算","href":"#"},
+                    {"id":"503","name":"客户结算","href":'#'}]},
+            {"id":"600","name":"财务管理","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"}]},
+            {"id":"700","name":"平台用户","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"media/userplatform/userplatform.html"},
+                    {"id":"602","name":"媒体用户","href":"media/userplatform/usermedia.html"},
+                    {"id":"603","name":"客户管理","href":"media/userplatform/userclient.html"}
+                ]},
+            {"id":"800","name":"信息管理","href":"#",
+                "children":[{"id":"801","name":"留言板","href":"#"},
+                    {"id":"802","name":"信息公告","href":"#"},
+                    {"id":"803","name":"新手帮助","href":"#"},
+                    {"id":"805","name":"服务条款","href":"#"},
+                    {"id":"805","name":"SDK附件","href":"media/infomanage/sdkadjunct.html"}
+                ]},
+            {"id":"900","name":"基础信息","href":"#",
+                "children":[{"id":"901","name":"系统参数","href":"media/baseinfo/ststmargue.html"},
+                    {"id":"902","name":"投放地区","href":"media/baseinfo/putarea.html"},
+                    {"id":"903","name":"数据字典","href":"#"},
+                    {"id":"905","name":"内部职务","href":"#"},
+                    {"id":"905","name":"媒体分类","href":"#"}
+                ]},
+            {"id":"1000","name":"系统管理","href":"#",
+                "children":[{"id":"1001","name":"功能菜单","href":"#"},
+                    {"id":"1002","name":"人员组织","href":"#"},
+                    {"id":"1003","name":"菜单权限","href":"#"},
+                    {"id":"1005","name":"数据权限","href":"#"},
+                    {"id":"1002","name":"系统日志","href":"#"},
+                    {"id":"1003","name":"操作日志","href":"#"}
+                ]}
+
+
+        ];
+        var nav=$(".box" );
+
+        for(var i=0;i<cmenus.length;i++){
+
+            var htmlval='';
+            htmlval =  "<li>"+" <div class='tx'>"+"<a href=''>"+cmenus[i].name+"</a>"+"</div>";
+
+            var childrenval = "";
+            for( var j=0;j<cmenus[i].children.length;j++){
+                if(Numb==1){
+                    childrenval+="<li>"+"<a href='"+'../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==2){
+                    childrenval+="<li>"+"<a href='"+'../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==3){
+                    childrenval+="<li>"+"<a href='"+'../../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+
+            }
+            htmlval = htmlval+"<div class='pop'>"+"<ul>" +childrenval+"</ul>"+"</div>"+"</li>";
+
+            nav.append(htmlval);
+        }
+
+    }
+    $(document).ready(function(){
+        var StrageDateJson = [{StrageDate:"2016-09-22",Client  :'宝马',order:'九月份订单',strage:'二线城市策略-洛阳',type:"CPM",Schedule:"288",undone:"100"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'二线城市策略-重庆',type:"CPM",Schedule:"328",undone:"211"},
+            {StrageDate:"2016-09-22",Client:'天猫',order:'九月份订单',strage:'二线城市策略-杭州',type:"CPM",Schedule:"485",undone:"321"},
+            {StrageDate:"2016-09-22",Client:'苏宁',order:'九月份订单',strage:'一线城市策略-深圳',type:"CPM",Schedule:"345",undone:"322"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'一线城市策略-广州',type:"CPM",Schedule:"345",undone:"252"},
+            {StrageDate:"2016-09-22",Client:'宝马',order:'九月份订单',strage:'一线城市策略-北京',type:"CPM",Schedule:"345",undone:"120"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'一线城市策略-上海',type:"CPM",Schedule:"345",undone:"215"}];
+        var StrageDate = $(".StrageDateMedia,.StrageDateClient");
+        for(var i =0;i<StrageDateJson.length;i++){
+//        alert(StrageDateJson.length);
+            StrageDate.append(
+                    "<tr>"+"<td>"+StrageDateJson[i].StrageDate+"</td>"+
+                    "<td>"+StrageDateJson[i].Client+"</td>"+
+                    "<td>"+StrageDateJson[i].order+"</td>"+
+                    "<td>"+StrageDateJson[i].strage+"</td>"+
+                    "<td>"+StrageDateJson[i].type+"</td>"+
+                    "<td>"+StrageDateJson[i].Schedule+"</td>"+
+                    "<td>"+StrageDateJson[i].undone+"</td>"+
+                    "</tr>"
+            );
+        }
+        var AdDateJson = [{Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831001",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831002",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831003",localpath:'http://lacalhost:8080',Adstate:'媒体未审核',finalurl:"..."}
+        ];
+        var AdDate = $(".AdDateMedia");
+        for(var j = 0;j<AdDateJson.length;j++){
+            AdDate.append("<tr>"+
+                    "<td>"+AdDateJson[j].Client+"</td>"+
+                    "<td>"+AdDateJson[j].order+"</td>"+
+                    "<td>"+AdDateJson[j].strage+"</td>"+
+                    "<td>"+AdDateJson[j].Adcode+"</td>"+
+                    "<td>"+"<a href=''>"+AdDateJson[j].localpath+"</a>"+"</td>"+
+                    "<td>"+AdDateJson[j].Adstate+"</td>"+
+                    "<td>"+"<a href='#'>"+AdDateJson[j].finalurl+"</a>"+"</td>"+
+                    "</tr>"
+            );
+        }
+    });
+    $(document).ready(function(){
+        $('#parentIframe,#city,#date,#type').on('click', function(){
+            layer.open({
+                type: 2,
+                title: '广告位+',
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area : ['800px' , '520px'],
+                content: 'test/iframe.html',
+                skin: 'demo-class',
+                shift:'left'
+            });
+        });
+    })
+</script>
+<script>
+    $(document).ready(function(){
+        menujson(2);
+        var bigheight= $(window).height();
+        $(".bigone,.bigtwo,.bigthree,.MonitorDetail").height(bigheight-35);
+        var date=new Date();
+        var nowtime = date.toLocaleDateString();
+        $(".nowtime").val(nowtime);
+    })
+</script>
+<body>
+<div class="nav">
+    <div class="allbtn">
+        <h2 class="buttonback" style="text-align:center;"><a href="../../login/welcome.html">欢迎页</a></h2>
+        <ul style="width:190px" class="box">
+        </ul>
+    </div>
+</div>
+<div style="width:100%;height:30px;min-width:500px;">
+    <a name="a" class="monitora" href="" style="height:31px;border-bottom:0;">客户报价</a>
+    <a name="a" class="monitora rf"  style="margin-right:5px;">订单报价</a>
+</div>
+<div>
+    <div id="d3" name="dv" class="bigthree" style="border:1px solid #2f73b9;margin:0 5px;border-left:none;border-right:none;">
+        <div  class="lf MonitorDetail" style="width:25%;">
+            <div style="border-bottom:1px solid #2f73b9;height:20%;padding-top:30px;">
+                <table class="monitorname_client"  cellspacing="0" cellpadding="0" width="90%">
+                    <tr>
+                        <td width="20%" align="center">类型</td>
+                        <td width="30%">
+                            <select name="">
+                                <option value="">直客客户</option>
+                            </select>
+                        </td>
+                        <td width="20%" align="center">客户</td>
+                        <td width="30%">
+                            <select name="" class="client_client"  onclick="client_client(this)">
+                                <option value="">-请选择-</option>
+                                <option value="1">宝马</option>
+                                <option value="2">德芙</option>
+                                <option value="3">苏宁</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="height:20%;padding-top:30px;border-bottom:1px solid #2f73b9">
+                <h4>客户信息</h4>
+                <table cellpadding="0" cellspacing="0" width="90%" class="client_news">
+                    <tr>
+                        <th>客户名称</th>
+                        <th>联系电话</th>
+                        <th>客户状态</th>
+                    </tr>
+                    <tr>
+                        <td>宝马</td>
+                        <td>13955256689</td>
+                        <td>正常</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="height:60%;padding-top:30px;">
+                订单列表
+            </div>
+        </div>
+        <div  class="lf MonitorDetail MD2" style="width:30%;">
+            <div class="MonitorDetailMiddle">
+                <button class="client_quote_big_button" id="parentIframe">+广告位</button>
+                <div>
+                    <table class="AdNewsClient" style="display:none;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <th>名称</th>
+                            <th>类型</th>
+                            <th>尺寸</th>
+                        </tr>
+                        <tr>
+                            <td>顶端轮图</td>
+                            <td>CPC</td>
+                            <td>50*50</td>
+                        </tr>
+                        <tr>
+                            <td>开机大图</td>
+                            <td>CPM</td>
+                            <td>70*70</td>
+                        </tr>
+                        <tr>
+                            <td>首页轮播</td>
+                            <td>CPD</td>
+                            <td>90*90</td>
+                        </tr>
+                        <tr>
+                            <td>底部弹出</td>
+                            <td>CPC</td>
+                            <td>60*60</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="MonitorDetailMiddle" style="border-bottom:none;">
+                <div>
+                    广告位基础信息
+                    <table class="offer_type"  cellpadding="0" id="wang2" cellspacing="0">
+                        <tr>
+                            <th colspan="4">基础信息</th>
+                        </tr>
+                        <tr>
+                            <td>所属媒体</td>
+                            <td>优酷土豆 </td>
+                            <td>所属应用</td>
+                            <td>PC-优土</td>
+                        </tr>
+                        <tr>
+                            <td>广告位名称</td>
+                            <td>PC-优土</td>
+                            <td>广告样式</td>
+                            <td>视频</td>
+                        </tr>
+                        <tr>
+                            <td>视频尺寸</td>
+                            <td>640 × 360 </td>
+                            <td>审核状态</td>
+                            <td>先审后投</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail" style="width:45%;height:100%;">
+            <div class="MonitorDetailRight"  style="overflow: auto;">
+                <button class="client_quote_button" id="type">+类型</button>
+                <div>
+                    <table cellpadding="0" cellspacing="0" class="offer_type">
+                        <tr>
+                            <th>类型</th>
+                            <th>报价</th>
+                        </tr>
+                        <tr>
+                            <td>CPC</td>
+                            <td>20.0(元)</td>
+                        </tr>
+                        <tr>
+                            <td>CPM</td>
+                            <td>100.0(元)</td>
+                        </tr>
+                        <tr>
+                            <td>CPD</td>
+                            <td>1000.0(元)</td>
+                        </tr>
+                        <tr>
+                            <td>CPA</td>
+                            <td>10.0(元)</td>
+                        </tr>
+                        <tr>
+                            <td>CPS</td>
+                            <td>100.0(元)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="MonitorDetailRight"  style="overflow: auto;">
+                 <button class="client_quote_button" id="city">+城市</button>
+                <div>
+                    <table cellpadding="0" cellspacing="0" class="offer_type">
+                        <tr>
+                            <th>城市编号</th>
+                            <th>城市名称</th>
+                            <th>类型</th>
+                            <th>报价方式</th>
+                            <th>价格</th>
+                        </tr>
+                        <tr>
+                            <td>100201</td>
+                            <td>北京</td>
+                            <td>CPC</td>
+                            <td>比例</td>
+                            <td>200%*基础价格</td>
+                        </tr>
+                        <tr>
+                            <td>100201</td>
+                            <td>北京</td>
+                            <td>CPM</td>
+                            <td>比例</td>
+                            <td>300%*基础价格</td>
+                        </tr>
+                        <tr>
+                            <td>110100</td>
+                            <td>上海</td>
+                            <td>CPM</td>
+                            <td>数值</td>
+                            <td>70.0（元）</td>
+                        </tr>
+                        <tr>
+                            <td>110100</td>
+                            <td>上海</td>
+                            <td>CPD</td>
+                            <td>数值</td>
+                            <td>100.0（元）</td>
+                        </tr>
+                        <tr>
+                            <td>100526</td>
+                            <td>洛阳</td>
+                            <td>CPD</td>
+                            <td>比例</td>
+                            <td>100%*基础价格</td>
+                        </tr>
+                        <tr>
+                            <td>100526</td>
+                            <td>洛阳</td>
+                            <td>CPC</td>
+                            <td>比例</td>
+                            <td>52%*基础价格</td>
+                        </tr>
+                        <tr>
+                            <td>100201</td>
+                            <td>重庆</td>
+                            <td>CPD</td>
+                            <td>数值</td>
+                            <td>32.0（元）</td>
+                        </tr>
+                        <tr>
+                            <td>100201</td>
+                            <td>重庆</td>
+                            <td>CPM</td>
+                            <td>数值</td>
+                            <td>25.0（元）</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="MonitorDetailRight" style="border-bottom:none; overflow: auto;">
+                 <button class="client_quote_button" id="date">+日期</button>
+                <div>
+                    <table cellpadding="0" cellspacing="0" class="offer_type">
+                        <tr>
+                            <th>日期</th>
+                            <th>比例数</th>
+                        </tr>
+                        <tr>
+                            <td>2016-09-27</td>
+                            <td>8.3</td>
+                        </tr>
+                        <tr>
+                            <td>2016-09-28</td>
+                            <td>9.5</td>
+                        </tr>
+                        <tr>
+                            <td>2016-09-29</td>
+                            <td>9.7</td>
+                        </tr>
+                        <tr>
+                            <td>2016-09-30</td>
+                            <td>9.5</td>
+                        </tr>
+                        <tr>
+                            <td>2016-10-10</td>
+                            <td>9.5</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function Click(a){
+        if($(a).is(".icon_1")){
+            $(a).removeClass('icon_1').addClass('icon_2');
+            $(a).parent().parent().next().show();
+        }else{
+            $(a).removeClass('icon_2').addClass('icon_1');
+            $(a).parent().parent().nextAll().hide();
+        }
+
+    }
+        function client_client(a) {
+            if ($('.client_client option:selected').text() == "宝马") {
+                $(".AdNewsClient").show();
+            }
+
+        }
+      $(document).ready(function(){
+          $(".AdNewsClient tr").click(function(){
+              $(this).css({"background":"#0088CC","color":'#fff'});
+              $(this).siblings().css({"background":"","color":''});
+              $(".offer_type").show();
+          })
+      })
+</script>
+</html>

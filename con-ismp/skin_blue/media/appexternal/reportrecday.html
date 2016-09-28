@@ -29,16 +29,16 @@
     <script src="../../../js/twolevel.js"></script>
     <script>
         $(document).ready(function(){
-            var jsondata = [{id: 1, code:"2016-02-12",request:"3",exposure:"74",click:"141"},
-                {id: 2, code:"2016-02-12",request:"4",exposure:"343",click:"442"},
-                {id: 3, code:"2016-02-12",request:"6",exposure:"34",click:"434"},
-                {id: 4, code:"2016-02-12",request:"8",exposure:"34",click:"242"},
-                {id: 5, code:"2016-02-12",request:"7",exposure:"45",click:"232"},
-                {id: 6, code:"2016-02-12",request:"8",exposure:"65",click:"23 "},
-                {id: 7, code:"2016-02-12",request:"4",exposure:"56",click:" 32"},
-                {id: 8, code:"2016-02-12",request:"55",exposure:"76",click:" 323"},
-                {id: 9, code:"2016-02-12",request:"5",exposure:"65",click:"232 "},
-                {id: 10, code:"2016-02-12",request:"7",exposure:"65",click:" 232"}
+            var jsondata = [{id: 1, code:"2016-02-12",request:"435",exposure:"264",click:"122"},
+                {id: 2, code:"2016-02-12",request:"534",exposure:"235",click:"124"},
+                {id: 3, code:"2016-02-12",request:"235",exposure:"111",click:"21"},
+                {id: 4, code:"2016-02-12",request:"245",exposure:"121",click:"12"},
+                {id: 5, code:"2016-02-12",request:"532",exposure:"325",click:"232"},
+                {id: 6, code:"2016-02-12",request:"643",exposure:"355",click:"123 "},
+                {id: 7, code:"2016-02-12",request:"753",exposure:"564",click:" 135"},
+                {id: 8, code:"2016-02-12",request:"565",exposure:"423",click:" 233"},
+                {id: 9, code:"2016-02-12",request:"346",exposure:"233",click:"133 "},
+                {id: 10, code:"2016-02-12",request:"246",exposure:"133",click:" 35"}
 
             ];
             var table = $('.TablePage');
@@ -197,7 +197,7 @@
                         <h1 class="User"><i></i>管理员<b></b></h1>
                         <div class="change" >
                             <a class="changePwd" onclick="shu(2)" href=""> <i></i>修改密码</a>
-                            <a class="changeExit" onclick="exit(2)" href=""> <i></i>退出</a>
+                            <a class="changeExit" onclick="exit(2)" href=""><i></i>退出</a>
                         </div>
                     </li>
                     <li><a href="" class="SDK">说明文档</a></li>
@@ -323,35 +323,32 @@
                     <tr>
                         <td align="center">日期</td>
                         <td align="left" width="30%">
-                            <input type="text" class="Wdate SearchSelect" onfocus="WdatePicker()"/> — <input type="text" class="Wdate SearchSelect" onfocus="WdatePicker()"/>
+                            <input type="text" class="Wdate SearchSelect beforedate" onfocus="WdatePicker()"/> — <input type="text"  class="Wdate nowdate SearchSelect" onfocus="WdatePicker()"/>
                         </td>
                     </tr>
                     <tr>
                         <td align="center">客户</td>
                         <td>
                             <select name="" class="SearchSelect">
-                                <option value="">请选择</option>
-                                <option value="">项目1</option>
-                                <option value="">项目2</option>
-                                <option value="">项目3</option>
+                                <option value="">美咖</option>
+                                <option value="">宝马</option>
+                                <option value="">爱奇艺</option>
                             </select>
                         </td>
                         <td align="center">订单</td>
                         <td>
                             <select name="" class="SearchSelect">
-                                <option value="">请选择</option>
-                                <option value="">项目1</option>
-                                <option value="">项目2</option>
-                                <option value="">项目3</option>
+                                <option value="">测试</option>
+                                <option value="">优土测试订单</option>
+                                <option value="">爱奇艺线上测试订单</option>
                             </select>
                         </td>
                         <td align="center">策略</td>
                         <td>
                             <select name="" class="SearchSelect">
-                                <option value="">请选择</option>
-                                <option value="">项目1</option>
-                                <option value="">项目2</option>
-                                <option value="">项目3</option>
+                                <option value="">普通策略</option>
+                                <option value="">普通策略</option>
+                                <option value="">高级策略</option>
                             </select>
                         </td>
 
@@ -365,13 +362,13 @@
                         <td>
                             <input type="checkbox"/>
                             <select name="" id="" class="SearchSelect">
-                                <option value="">请选择广告位</option>
-                                <option value="">请选择广告位</option>
-                                <option value="">请选择广告位</option>
+                                <option value="">banner广告</option>
+                                <option value="">插屏广告</option>
+                                <option value="">视频广告</option>
                             </select>
                         </td>
                     </tr>
-                    <tr align="cneter">
+                    <tr align="center">
                         <td colspan="6" align="center">
                             <button class="SearchButton button Searchtable">查询</button>
                             <button class="SearchButton button">下载</button>

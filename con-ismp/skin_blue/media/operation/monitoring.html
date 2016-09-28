@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../css/blue/tree.css"/>
     <link rel="stylesheet" href="../../../css/blue/base/main.css"/>
     <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../js/layer/layer.js"></script>
     <script src="../../../tool/My97DatePicker/WdatePicker.js"></script>
     <title>功能主页面</title>
 </head>
@@ -26,6 +27,8 @@
     select{
         width:90%;
     }
+    body .demo-class .layui-layer-title{background:#4476A7; color:#fff; border: none;}
+
 </style>
 <script>
     function menujson(Numb){
@@ -45,7 +48,9 @@
                     {"id":"203","name":"ad销售报价","href":"media/appaudit/sellprice.html"},
                     {"id":"204","name":"ad对接留档","href":"media/appaudit/butt.html"},
                     {"id":"205","name":"应用管理","href":"media/appexternal/page.html"},
-                    {"id":"206","name":"广告位管理","href":"media/appaudit/adpage.html"}]},
+                    {"id":"206","name":"广告位管理","href":"media/appaudit/adpage.html"},
+                    {"id":"207","name":'客户报价',"href":'media/operation/client_quote.html'}
+                ]},
             {"id":"300","name":"客户管理","href":"#",
                 "children":[{"id":"301","name":"内部普通订单","href":"media/appinterior/internalorder.html"},
                     {"id":"302","name":"内部余量订单","href":"media/appinterior/remnantorder.html"},
@@ -126,6 +131,52 @@
         }
 
     }
+    $(document).ready(function(){
+        $("#suggset,#material,#leave").on("click",function(){
+            layer.open({
+                type: 2,
+                title: '广告位+',
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area : ['800px' , '520px'],
+                content: 'test/iframe.html',
+                skin: 'demo-class'
+            });
+        });
+        var StrageDateJson = [{StrageDate:"2016-09-18",StrageType:"CPC",Schedule:"288",undone:"100",FinishRate:"28%"},
+            {StrageDate:"2016-09-19",StrageType:"CPC",Schedule:"328",undone:"211",FinishRate:"50%"},
+            {StrageDate:"2016-09-20",StrageType:"CPC",Schedule:"485",undone:"321",FinishRate:"79%"},
+            {StrageDate:"2016-09-21",StrageType:"CPC",Schedule:"345",undone:"322",FinishRate:"85%"},
+            {StrageDate:"2016-09-22",StrageType:"CPC",Schedule:"345",undone:"-",FinishRate:"-"},
+            {StrageDate:"2016-09-23",StrageType:"CPC",Schedule:"345",undone:"-",FinishRate:"-"},
+            {StrageDate:"2016-09-24",StrageType:"CPC",Schedule:"345",undone:"-",FinishRate:"-"}];
+        var StrageDate = $(".StrageDateMedia,.StrageDateClient");
+        for(var i =0;i<StrageDateJson.length;i++){
+//        alert(StrageDateJson.length);
+            StrageDate.append(
+                    "<tr>"+"<td>"+StrageDateJson[i].StrageDate+"</td>"+                   
+                    "<td>"+StrageDateJson[i].StrageType+"</td>"+
+                    "<td>"+StrageDateJson[i].Schedule+"</td>"+
+                    "<td>"+StrageDateJson[i].undone+"</td>"+
+                    "<td>"+StrageDateJson[i].FinishRate+"</td>"+
+                    "</tr>"
+            );
+        }
+        var AdDateJson = [{Adcode:"160831001",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Adcode:"160831002",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Adcode:"160831003",localpath:'http://lacalhost:8080',Adstate:'媒体未审核',finalurl:"..."}
+        ];
+        var AdDate = $(".AdDateMedia,.AdDateClient");
+        for(var j = 0;j<AdDateJson.length;j++){
+            AdDate.append("<tr>"+
+                    "<td>"+AdDateJson[j].Adcode+"</td>"+
+                    "<td>"+"<a href=''>"+AdDateJson[j].localpath+"</a>"+"</td>"+
+                    "<td>"+AdDateJson[j].Adstate+"</td>"+
+                    "<td>"+"<a href='#'>"+AdDateJson[j].finalurl+"</a>"+"</td>"+
+                    "</tr>"
+            );
+        }
+    });
 
 </script>
 <script>
@@ -141,207 +192,21 @@
 <body>
 <div class="nav">
     <div class="allbtn">
-        <h2 class="buttonback" style="text-align:center;"><a href="../../login/welcome.html">返回主页</a></h2>
+        <h2 class="buttonback" style="text-align:center;"><a href="../../login/welcome.html">主页</a></h2>
         <ul style="width:190px" class="box">
-            <!--<li>-->
-                <!--<div class='tx'><a href="#">报表中心</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul>-->
-                        <!--<li>-->
-                            <!--<a href="#">媒体报表</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">客户报表</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">内部报表</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">阳狮流量报表</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">阳狮uv报表</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">媒体管理</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">应用审核</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">ad采购报价</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">ad销售报价</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">ad对接留档</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">应用管理</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">广告位管理</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">订单管理</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">文本订单</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">内部普通订单</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">内部余量订单</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">客户订单</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">广告测试</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">运营中心</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">监控</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">平台用户</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">内部员工</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">媒体用户</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">客户管理</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">信息管理</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">留言板</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">信息公告</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">新手帮助</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">服务条款</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">SDK附件</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">信息管理</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">留言板</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">信息公告</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">新手帮助</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">服务条款</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">SDK附件</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">基础信息</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">系统参数</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">投放地区</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">数据字典</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">内部职位</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">媒体分类</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class='tx'><a href="">系统管理</a> </div>-->
-                <!--<div class='pop'>-->
-                    <!--<ul style="float:left;">-->
-                        <!--<li>-->
-                            <!--<a href="#">功能菜单</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">人员组织</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">菜单权限</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">数据权限</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">系统日志</a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">操作日志</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
         </ul>
     </div>
 </div>
 <div style="width:100%;height:30px;min-width:500px;">
     <a name="a" class="monitora" onclick="show(1,this)" style="height:31px;border-bottom:0;">买量客户</a>
     <a name="a" class="monitora" onclick="show(2,this)">日流量流出</a>
-    <a name="a" class="monitora rf" onclick="show(3,this)" style="margin-right:5px;">放量媒体</a>
+    <a name="a" class="monitora rf"  href="monitoringMedia.html" onclick="show(3,this)" style="margin-right:5px;">放量媒体</a>
     <a name="a" class="monitora rf" onclick="show(4,this)">日流量流入</a>
 </div>
 <div>
     <div id="d1" name="dv" class="bigone" style="display:block;margin:0 5px;border-top:1px solid #2f73b9;">
         <div  class="lf MonitorDetail" style="width:30%;">
-            <div style="border-bottom:1px solid #2f73b9">
+            <div style="border-bottom:1px solid #2f73b9;height:30%;overflow:auto;padding-top:30px;">
                 <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="20%">类型</td>
@@ -351,7 +216,7 @@
                             </select>
                         </td>
                         <td width="20%">日期</td>
-                        <td><input type="text" size="15"  class="Wdate nowtime" value="" onfocus="WdatePicker()"/></td>
+                        <td><input type="text" size="15"  class="Wdate" value="2016-09-21" onfocus="WdatePicker()"/></td>
                     </tr>
                 </table>
                 <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
@@ -359,19 +224,26 @@
                         <td width="20%">客户名称</td>
                         <td width="30%">
                             <select name="">
-                                <option value="">宝马</option>
-                                <option value="">美咖</option>
-                                <option value="">芒果TV</option>
-                                <option value="">爱奇艺</option>
+                                <option value="0">-请选择-</option>
+                                <option value="1">宝马</option>
+                                <option value="2">德芙</option>
+                                <option value="3">苏宁</option>
+                                <option value="4">淘宝天猫</option>
                             </select>
                         </td>
                         <td width="20%">订单名称</td>
                         <td>
                             <select name="">
-                                <option value="">优土测试订单</option>
-                                <option value="">接口测试订单</option>
-                                <option value="">芒果vast3暂停测试</option>
-                                <option value="">PC视频对接</option>
+                                <option value="0">-请选择-</option>
+                                <option value="">宝马9月订单</option>
+                                <option value="">宝马10月订单</option>
+                                <option value="">宝马11月订单</option>
+                                <option value="">德芙10月订单</option>
+                                <option value="">德芙11月订单</option>
+                                <option value="">苏宁10月订单</option>
+                                <option value="">苏宁10月订单</option>
+                                <option value="">天猫10月订单</option>
+                                <option value="">天猫10月订单</option>
                             </select>
                         </td>
                     </tr>
@@ -379,19 +251,23 @@
                         <td>策略名称</td>
                         <td>
                             <select name="">
-                                <option value="">测试</option>
-                                <option value="">测试</option>
-                                <option value="">测试</option>
-                                <option value="">测试</option>
+                                <option value="0">-请选择-</option>
+                                <option value="">宝马9月订单-一线城市-北京</option>
+                                <option value="">宝马9月订单-一线城市-上海</option>
+                                <option value="">宝马9月订单-一线城市-广州</option>
+                                <option value="">宝马9月订单-二线城市-重庆</option>
+                                <option value="">宝马9月订单-二线城市-杭州</option>
+                                <option value="">宝马9月订单-二线城市-洛阳</option>
                             </select>
                         </td>
                         <td>广告位</td>
                         <td>
                             <select name="">
-                                <option value="">banner广告</option>
-                                <option value="">开屏广告</option>
-                                <option value="">视频广告</option>
-                                <option value="">插屏广告</option>
+                                <option value="0">-请选择-</option>
+                                <option value="">搜狐-PC-顶端轮图</option>
+                                <option value="">百度-Android-首页左下角广告位</option>
+                                <option value="">优酷-IOS-首页轮播大图</option>
+                                <option value="">爱奇艺-Android-开机大图</option>
                             </select>
                         </td>
                     </tr>
@@ -400,89 +276,710 @@
                     </tr>
                 </table>
             </div>
-            <div>
+            <div style="height:70%;padding-top:30px;overflow:auto">
                 <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="border-bottom:0">
                     <tr>
-                        <th width="50%" style="text-align:left">客户-订单-策略-广告位</th>
+                        <th width="60%" style="text-align:left">客户-订单-策略-广告位</th>
                         <th width="20%">级别</th>
                         <th width="20%">类型</th>
-                        <th width="10%"></th>
                     </tr>
                     <tr>
-                        <td><span class="icon_1" onclick="Click(this)"></span>王亮</td>
-                        <td>1客户</td>
-                        <td></td>
+                        <td><span class="icon_1" onclick="Click(this,1)"></span>宝马</td>
+                        <td>1直客客户</td>
                         <td></td>
                     </tr>
                     <tr style="display:none;">
-                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>测试</td>
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this,2)"></span>宝马9月订单</td>
                         <td>2订单</td>
                         <td></td>
-                        <td></td>
                     </tr>
                     <tr style="display:none;">
-                        <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this)"></span>>测试</td>
-                        <td>3策略</td>
-                        <td></td>
-                        <td></td>
+                       <td colspan="3">
+                           <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                               <tr>
+                                   <td width="60%"><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>一线城市-上海</td>
+                                   <td width="20%">3策略</td>
+                                   <td width="20%"></td>
+                               </tr>
+                               <tr style="display:none;">
+                                   <td colspan="3">
+                                       <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                           <tr  class="ShowTableClient wang" id="wangone">
+                                               <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                               <td  width="20%">4广告位</td>
+                                               <td  width="20%"></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangtwo">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangthree">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfour">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfive">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangsix">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                       </table>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>一线城市-北京</td>
+                                   <td>3策略</td>
+                                   <td></td>
+                                   <td></td>
+                               </tr>
+                               <tr style="display:none;">
+                                   <td colspan="3">
+                                       <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                           <tr  class="ShowTableClient wang" id="wangone">
+                                               <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                               <td  width="20%">4广告位</td>
+                                               <td  width="20%"></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangtwo">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangthree">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfour">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfive">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangsix">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                       </table>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>二线城市-洛阳</td>
+                                   <td>3策略</td>
+                                   <td></td>
+                                   <td></td>
+                               </tr>
+                               <tr style="display:none;">
+                                   <td colspan="3">
+                                       <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                           <tr  class="ShowTableClient wang" id="wangone">
+                                               <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                               <td  width="20%">4广告位</td>
+                                               <td  width="20%"></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangtwo">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangthree">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfour">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangfive">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr  class="ShowTableClient wang" id="wangsix">
+                                               <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                               <td>4广告位</td>
+                                               <td></td>
+                                           </tr>
+                                       </table>
+                                   </td>
+                               </tr>
+                           </table>
+                       </td>
+                    </tr>
+                </table>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="border-bottom:0;margin-top:0">
+                    <tr>
+                        <td width="60%"><span class="icon_1" onclick="Click(this,1)"></span>德芙</td>
+                        <td width="20%">1直客客户</td>
+                        <td width="20%"></td>
                     </tr>
                     <tr style="display:none;">
-                        <td><span class="kong_2"></span><span class="icon_3"></span>Andriod-开屏赚-开屏广告</td>
-                        <td>4广告位</td>
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this,2)"></span>德芙9月订单</td>
+                        <td>2订单</td>
                         <td></td>
-                        <td></td>
+                    </tr>
+                    <tr  style="display:none;">
+                        <td colspan="3">
+                            <table class="cheshi" cellspacing="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <td width="60%"><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>一线城市-上海</td>
+                                    <td width="20%">3策略</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="3">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>二线城市-重庆</td>
+                                    <td>3策略</td>
+                                    <td></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="3">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>一线城市-广州</td>
+                                    <td>3策略</td>
+                                    <td></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="3">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                 </table>
                 <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="margin-top:0">
                     <tr>
-                        <td width="50%"><span class="icon_1" onclick="Click(this)"></span>周涛</td>
-                        <td width="20%">1客户</td>
+                        <td width="60%"><span class="icon_1" onclick="Click(this,1)"></span>苏宁</td>
+                        <td width="20%">1直客客户</td>
                         <td width="20%"></td>
-                        <td width="10%"></td>
                     </tr>
                     <tr style="display:none;">
-                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>测试</td>
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this,2)"></span>苏宁9月订单</td>
                         <td>2订单</td>
                         <td></td>
-                        <td></td>
                     </tr>
                     <tr style="display:none;">
-                        <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this)"></span>>测试</td>
-                        <td>3策略</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr style="display:none;">
-                        <td><span class="kong_2"></span><span class="icon_3"></span>Andriod-开屏赚-开屏广告</td>
-                        <td>4广告位</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3">
+                            <table class="cheshi" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="60%"><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>一线城市-上海</td>
+                                    <td width="20%">3策略</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="4">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>二线城市-洛阳</td>
+                                    <td>3策略</td>
+                                    <td></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="4">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="kong_1"></span><span class="icon_1" onclick="Click(this,3)"></span>二线城市-重庆</td>
+                                    <td>3策略</td>
+                                    <td></td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="4">
+                                        <table class="cheshi" cellpadding="0" cellspacing="0" style="width:100%">
+                                            <tr  class="ShowTableClient wang">
+                                                <td  width="60%" ><span class="kong_2"></span><span class="icon_3"></span>搜狐-PC-搜狐视频-顶端广告位</td>
+                                                <td  width="20%">4广告位</td>
+                                                <td  width="20%"></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>网易-Android-网易新闻-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-IOS-百度云盘-右角图片</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-IOS-爱奇艺视频-首页大图</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang" >
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>爱奇艺-Android-爱奇艺视频-开机轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr  class="ShowTableClient wang">
+                                                <td ><span class="kong_2"></span><span class="icon_3"></span>百度-PC-百度糯米-首页轮播</td>
+                                                <td>4广告位</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                 </table>
             </div>
         </div>
         <div  class="lf MonitorDetail MD2" style="width:40%;">
             <div class="MonitorDetailMiddle" style="height:35px;text-align:center;overflow-x: hidden;">
-                <button class="MonitorButton">运行</button><button class="MonitorButton">暂停</button><button class="MonitorButton">排期调整</button><button class="MonitorButton">延后补量</button><button class="MonitorButton">素材调整</button>
+                <button class="MonitorButton">运行</button>
+                <button class="MonitorButton">暂停</button>
+                <button class="MonitorButton" id="suggset">排期调整</button>
+                <button class="MonitorButton" id="leave">延后补量</button>
+                <button class="MonitorButton" id="material">素材调整</button>
             </div>
-            <div class="MonitorDetailMiddle">
-               <h4> 策略-广告位排期 应用-广告位排期</h4>
+            <div class="MonitorDetailMiddle" style="overflow:auto">
+                <h4 class="client1"> 本策略广告位排期</h4>
+                <table class="StrageDateClient" id="wang0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">类型</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">未完成数</th>
+                        <th width="10%"> 完成率</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="StrageDateClient" id="zou0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">类型</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">未完成数</th>
+                        <th width="10%"> 完成率</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
-            <div class="MonitorDetailMiddle" style="border-bottom:none;">
-               <h4>
-                   应用-广告位素材 策略-广告位素材
+            <div class="MonitorDetailMiddle" style="border-bottom:none;overflow:auto;">
+               <h4 class="client2">
+                  本策略广告位素材
                </h4>
+                <table class="AdDateClient" id="wang1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>创意code</th>
+                        <th>本地路径</th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="AdDateClient" id="zou1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>创意code</th>
+                        <th>
+                            本地路径
+                        </th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
         <div  class="lf MonitorDetail" style="width:30%;height:100%;">
-            <div class="MonitorDetailRight">
-                <h4>广告位信息 </h4>
+            <div class="MonitorDetailRight" style="overflow:auto;">
+                <h4 class="client3">广告位信息 </h4>
+                <table class="AdNewsClient" cellpadding="0" id="wang2" cellspacing="0">
+                    <tr>
+                        <th colspan="4">基础信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>优酷土豆 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>PC-优土</td>
+                        <td>广告样式</td>
+                        <td>视频</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>640 × 360 </td>
+                        <td>审核状态</td>
+                        <td>先审后投</td>
+                    </tr>
+                </table>
+                <table class="AdNewsClient" cellpadding="0" id="wang02"  cellspacing="0">
+                    <tr>
+                        <th>出售方式</th>
+                        <th>单价 </th>
+                        <th>城市</th>
+                        <th>日期</th>
+                    </tr>
+                    <tr>
+                        <td>CPC-单次点击</td>
+                        <td>2.1(元)</td>
+                        <td>不同城市</td>
+                        <td>不同日期</td>
+                    </tr>
+                    <tr>
+                        <td>CPM-千次曝光</td>
+                        <td>6.0(元)</td>
+                        <td>不同城市</td>
+                        <td>不同日期</td>
+                    </tr>
+                    <tr>
+                        <td>CPD-包天</td>
+                        <td>50.0(元)</td>
+                        <td>空</td>
+                        <td>空</td>
+                    </tr>
+                </table>
+                <table class="AdNewsClient" cellpadding="0"  id="zou2" cellspacing="0">
+                    <tr>
+                        <th colspan="4">广告位信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>爱奇艺 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>banner广告</td>
+                        <td>广告样式</td>
+                        <td>轮播图</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>610 × 160 </td>
+                        <td>审核状态</td>
+                        <td>未审核</td>
+                    </tr>
+                </table>
             </div>
-            <div class="MonitorDetailRight">
-                <h4>互斥排期</h4>
+            <div class="MonitorDetailRight" style="overflow:auto;">
+                <h4 class="client4">互斥排期</h4>
+                <table class="exclusionideaClient" cellpadding="0" id="wang4" cellspacing="0">
+                    <tr>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th>策略</th>
+                        <th>类型</th>
+                        <th>预定投放</th>
+                    </tr>
+                    <tr>
+                        <td>宝马</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-洛阳</td>
+                        <td>CPC</td>
+                        <td>3000</td>
+                    </tr>
+                    <tr>
+                        <td>德芙</td>
+                        <td>九月份订单</td>
+                        <td>一线城市策略-北京</td>
+                        <td>CPM</td>
+                        <td>2000</td>
+                    </tr>
+                    <tr>
+                        <td>德芙</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-重庆</td>
+                        <td>CPM</td>
+                        <td>4000</td>
+                    </tr>
+                    <tr>
+                        <td>苏宁</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-济南</td>
+                        <td>CPC</td>
+                        <td>5000</td>
+                    </tr>
+                </table>
+                <table class="exclusionClient" cellspacing="0" id="zou3" cellpadding="0">
+                    <tr>
+                        <th>序号</th>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th>类型</th>
+                        <th>策略</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>德芙</td>
+                        <td>test测试订单</td>
+                        <td>DMP</td>
+                        <td>高级策略</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>美颜</td>
+                        <td>PC视频对接</td>
+                        <td>PMP</td>
+                        <td>一般策略</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>美咖</td>
+                        <td>测试-215</td>
+                        <td>PMD</td>
+                        <td>普通策略</td>
+                    </tr>
+                </table>
             </div>
-            <div class="MonitorDetailRight" style="border-bottom:none;">
-                <h4>互斥创意 </h4>
+            <div class="MonitorDetailRight" style="border-bottom:none;overflow:auto;">
+                <h4 class="client5">互斥创意 </h4>
+                <table class="exclusionideaClient" cellpadding="0" id="wang04" cellspacing="0">
+                    <tr>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th>策略</th>
+                        <th>最终路径</th>
+                    </tr>
+                    <tr>
+                        <td>宝马</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-洛阳</td>
+                        <td><a href="#">http://baidu.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>德芙</td>
+                        <td>九月份订单</td>
+                        <td>一线城市策略-北京</td>
+                        <td><a href="#">http://baidu.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>德芙</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-重庆</td>
+                        <td><a href="#">http://baidu.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>苏宁</td>
+                        <td>九月份订单</td>
+                        <td>二线城市策略-济南</td>
+                        <td><a href="#">http://baidu.com</a></td>
+                    </tr>
+                </table>
+                <table class="exclusionideaClient" cellpadding="0" id="zou4" cellspacing="0">
+                    <tr>
+                        <th>序号</th>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th>类型</th>
+                        <th>策略</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>优土</td>
+                        <td>优土测试订单</td>
+                        <td>CMP</td>
+                        <td>高级通策略</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>宝马</td>
+                        <td>test测试</td>
+                        <td>DMP</td>
+                        <td>一般策略</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>美颜</td>
+                        <td>测试-345</td>
+                        <td>PMP</td>
+                        <td>高级策略</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -523,7 +1020,7 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <tr >
                         <td>广告位</td>
                         <td>
                             <select name="">
@@ -561,7 +1058,7 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr style="display:none;">
+                    <tr style="display:none;" class="ShowTableMedia" id="andriod">
                         <td><span class="kong_1"></span><span class="icon_3" onclick="Click(this)"></span>>Andriod-开屏赚-开屏广告</td>
                         <td>3广告位</td>
                         <td></td>
@@ -581,7 +1078,7 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr style="display:none;">
+                    <tr style="display:none;" class="ShowTableMedia" id="ios">
                         <td><span class="kong_1"></span><span class="icon_3" onclick="Click(this)"></span>IOS-环球-环球ios-banner</td>
                         <td>3广告位</td>
                         <td></td>
@@ -596,22 +1093,202 @@
             </div>
             <div class="MonitorDetailMiddle">
                 <h4> 策略-广告位排期 应用-广告位排期</h4>
+                <table class="StrageDateMedia" id="andriod0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">媒体</th>
+                        <th width="10%">类型</th>
+                        <th width="20%">策略</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">未完成数</th>
+                        <th width="10%"> 完成率</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="StrageDateMedia" id="ios0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">媒体</th>
+                        <th width="10%">类型</th>
+                        <th width="20%">策略</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">未完成数</th>
+                        <th width="10%"> 完成率</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
             <div class="MonitorDetailMiddle" style="border-bottom:none;">
                 <h4>
                     应用-广告位素材 策略-广告位素材
                 </h4>
+                <table class="AdDateMedia" id="andriod1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>创意code</th>
+                        <th>类型</th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="AdDateMedia" id="ios1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>创意code</th>
+                        <th>类型</th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
+
             </div>
         </div>
         <div  class="lf MonitorDetail" style="width:30%;height:100%;">
             <div class="MonitorDetailRight">
                 <h4>广告位信息 </h4>
+                <table class="AdNewsMedia" id="andriod2" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">广告位信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>优酷土豆 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>PC-优土</td>
+                        <td>广告样式</td>
+                        <td>视频</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>640 × 360 </td>
+                        <td>审核状态</td>
+                        <td>是</td>
+                    </tr>
+                </table>
+                <table class="AdNewsMedia" id="ios2" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">广告位信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>优酷土豆 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>PC-优土</td>
+                        <td>广告样式</td>
+                        <td>视频</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>640 × 360 </td>
+                        <td>审核状态</td>
+                        <td>是</td>
+                    </tr>
+                </table>
+
             </div>
             <div class="MonitorDetailRight">
                 <h4>互斥排期</h4>
+                <table class="exclusionMedia" id="andriod3" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>序号</th>
+                        <th>日期</th>
+                        <th>排期</th>
+                        <th>单价</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2016-08-01</td>
+                        <td>2000</td>
+                        <td>RMB100.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2016-08-11</td>
+                        <td>400</td>
+                        <td>RMB140.00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2016-08-31</td>
+                        <td>600</td>
+                        <td>RMB130.00</td>
+                    </tr>
+                </table>
+                <table class="exclusionMedia" id="ios3" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>序号</th>
+                        <th>日期</th>
+                        <th>排期</th>
+                        <th>单价</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2016-08-01</td>
+                        <td>2000</td>
+                        <td>RMB100.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2016-08-11</td>
+                        <td>400</td>
+                        <td>RMB140.00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2016-08-31</td>
+                        <td>600</td>
+                        <td>RMB130.00</td>
+                    </tr>
+                </table>
             </div>
             <div class="MonitorDetailRight" style="border-bottom:none;">
                 <h4>互斥创意 </h4>
+                <table class="exclusionideaMedia" id="andriod4" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">创意互斥</th>
+                    </tr>
+                    <tr>
+                        <td>样式</td>
+                        <td>Banner</td>
+                        <td>尺寸(宽x高)</td>
+                        <td>320x50</td>
+                    </tr>
+                    <tr>
+                        <td>购买</td>
+                        <td>CPC</td>
+                        <td>单价</td>
+                        <td>CNY 200.0分(2.0元)</td>
+                    </tr>
+                </table>
+                <table class="exclusionideaMedia" id="ios4" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">创意互斥</th>
+                    </tr>
+                    <tr>
+                        <td>样式</td>
+                        <td>Banner</td>
+                        <td>尺寸(宽x高)</td>
+                        <td>320x50</td>
+                    </tr>
+                    <tr>
+                        <td>购买</td>
+                        <td>CPC</td>
+                        <td>单价</td>
+                        <td>CNY 200.0分(2.0元)</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -619,20 +1296,21 @@
 </div>
 </body>
 <script>
-    $(document).ready(function(){
-
-    })
-</script>
-<script>
-    function Click(a){
+    function Click(a,n){
         if($(a).is(".icon_1")){
             $(a).removeClass('icon_1').addClass('icon_2');
             $(a).parent().parent().next().show();
         }else{
-            $(a).removeClass('icon_2').addClass('icon_1');
-            $(a).parent().parent().nextAll().hide();
-        }
+            if(n==2||n==1){
+                $(a).removeClass('icon_2').addClass('icon_1');
+                $(a).parent().parent().nextAll().hide();
+            }
+            if(n==3){
+                $(a).removeClass('icon_2').addClass('icon_1');
+                $(a).parent().parent().next().hide();
+            }
 
+        }
     }
     function show(id,arr){
         var as=document.getElementsByName('a');
@@ -647,5 +1325,33 @@
             }
         }
     }
+    $(".StrageDate,.AdDate,.AdNews,.exclusion,.exclusionidea").fadeOut();
+    var ShowTablesMedia = $(".ShowTableMedia");
+    ShowTablesMedia.on('click',function(){
+        ShowTablesMedia.css({"background":"","color":""});
+        $(this).css({"background":"#2f73b9","color":"#fff"});
+    });
+    $(".wang").click(function(){
+        $("#zou0,#zou1,#zou2,#zou3,#zou4").hide();
+        $("#wang4,#wang1,#wang2,#wang3,#wang0,#wang02,#wang04").show();
+    });
+    $("#zou").click(function(){
+        $("#wang0,#wang1,#wang2,#wang3,#wang4,#wang02,#wang04").hide();
+        $("#zou0,#zou1,#zou2,#zou3,#zou4").show();
+    });
+    var ShowTablesClient = $(".ShowTableClient");
+    ShowTablesClient.on('click',function(){
+        ShowTablesClient.css({"background":"","color":""});
+        $(this).css({"background":"#2f73b9","color":"#fff"});
+    });
+    $("#andriod").click(function(){
+        $("#andriod0,#andriod1,#andriod2,#andriod3,#andriod4").show();
+        $("#ios0,#ios1,#ios2,#ios3,#ios4").hide();
+    });
+    $("#ios").click(function(){
+        $("#andriod0,#andriod1,#andriod2,#andriod3,#andriod4").hide();
+        $("#ios0,#ios1,#ios2,#ios3,#ios4").show();
+    });
+       $('.layui-layer-iframe').css({top:'0',left:'0'});
 </script>
 </html>

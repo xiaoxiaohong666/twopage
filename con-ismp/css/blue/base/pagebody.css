@@ -88,9 +88,9 @@ a:hover{
 }
 /*媒体广告位管理页面的样式*/
 .DomUpBody {
-    min-height: 100%;
+    min-height: 99.9%;
     height: auto !important;
-    height: 100%;
+    height: 99.9%;
     background:#fff;
 }
 .DomBody {
@@ -101,6 +101,7 @@ a:hover{
     margin:19px auto;
     margin-top:0;
     padding-top:19px;
+    padding-bottom:15px;
 }
 .DomBread_nav a{
     color:#515151;
@@ -212,6 +213,8 @@ a:hover{
     text-align:center;
     background:#fff;
     font-family: Arial,Verdana,"microsoft yahei";
+    border:1px solid #ddd;
+    box-shadow: 0 0 10px #ddd;
 }
 .TablePageEasy{
     text-align:center;
@@ -239,6 +242,7 @@ a:hover{
 .TablePage  tr td{
     width:1530px;
     height:35px;
+    border:1px solid #ddd;
 }
 .TablePage tr:hover{
     /*background:#ffe48d;*/
@@ -255,6 +259,8 @@ a:hover{
 /* TableEdit部分开始*/
 .DomEditMatter{
     background:#fafbfd;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
 }
 .DomEditMatter p{
     width:1080px;
@@ -269,10 +275,13 @@ a:hover{
     padding:6px;
     font-family: Arial,Verdana,"microsoft yahei";
     font-weight:400;
+    border-bottom:2px solid #0088CC;
 }
 .TableEdit{
     width:100%;
     color:#515151;
+    border:1px solid #ddd;
+    box-shadow: 0 0 10px #ddd;
 }
 .TableEdit tr td{
     height:50px;
@@ -280,6 +289,7 @@ a:hover{
     font-size:14px;
     font-weight:500;
     font-family: Arial,Verdana,"microsoft yahei" ;
+    border:1px solid #ddd;
 }
 /* TableEdit部分结束*/
 /*TableView部分开始*/
@@ -302,6 +312,7 @@ a:hover{
     font-size:14px;
     font-weight:500;
     font-family: Arial,Verdana,"microsoft yahei" ;
+    border:1px solid #ddd;
 }
 /*TableView部分结束*/
 
@@ -340,6 +351,7 @@ a:hover{
     vertical-align: middle;
 }
 .pageText{
+    width:200px;
     font-size:14px;
     font-weight:500;
     font-family: Arial,Verdana,"microsoft yahei" ;
@@ -403,6 +415,7 @@ a:hover{
     margin:20px 10px;
 }
 .SearchSelect{
+    width:200px;
     font-size:14px;
     font-weight:500;
     font-family: Arial,Verdana,"microsoft yahei" ;
@@ -975,9 +988,7 @@ a:hover{
     background:#fa542d;
     color:#fff;
 }
-.Wdate{
-    width:130px;
-}
+
 /***************************************弹出弹出***********************************************************************/
 /****************************************四个不同颜色的启用开始********************************************************/
 .box_up_red,.box_up_green,.box_up_blue,.box_up_greens,.box_up_yellow{
@@ -1173,3 +1184,48 @@ a:hover{
     border-radius:5px;
 }
 /*********************************修改密码结束**********************************/
+.close_ads{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    background:#ddd;
+    line-height:20px;
+    cursor: pointer;
+}
+.close_ads:hover{
+    background:#2bbddc;
+    color:#fff;
+}
+.select_ads{
+    margin:20px;
+    width:80px;
+    height:40px;
+    background:#2f73b9;
+    color:#fff;
+}
+.Daypart_button{
+    width:80px;
+    height:40px;
+    margin:5px;
+    background:#2f73b9;
+    color:#fff;
+}
+.tab_show{
+    margin-left:25px;
+    vertical-align: middle;
+}
+.icon_rule{
+    display:inline-block;
+    width:20px;
+    height:21px;
+    margin-right:5px;
+    background:url(../../../img/blue/icon_rule.jpg);
+    background-size:20px 21px;
+    vertical-align: middle;
+}
+.a_click{
+    text-decoration: underline;
+    color:#00438a;
+    margin-left:5px;
+}

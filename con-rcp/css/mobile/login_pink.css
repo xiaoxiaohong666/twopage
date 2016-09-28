@@ -1,0 +1,134 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline: none;
+}
+a{
+    text-decoration: none;
+}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.clear{
+    clear:both;
+}
+html{
+    background:#FF4081;
+}
+.wrap{
+   width:300px;
+    height:400px;
+    background:#fff;
+    border-radius:5%;
+    position:absolute;
+    left:50%;
+    top:10%;
+    margin-left:-150px;
+    box-shadow: 1px 2px 3px #a2a09e;
+}
+.LockOut{
+   width:150px;
+    height:150px;
+    border-radius:50%;
+    background:#dddddd;
+    margin:10px auto;
+    position:relative;
+}
+.LockBig{
+    left:35px;
+    top:50px;
+    position:relative;
+}
+.LockLittle{
+    position:absolute;
+    width:80px;
+    height:60px;
+    border-radius:10%;
+    background:#FFA000;
+    display:block;
+}
+.LockMiddle{
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:#fff;
+    left:32px;
+    top:16px;
+    z-index:1;
+}
+.LockSmall{
+    position:absolute;
+    border:9px solid #FFA000;
+    width:50px;
+    height:35px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    top:-30px;
+    left:15px;
+    border-bottom:none;
+}
+.LockFinally{
+      position:absolute;
+     background:#fff;
+      width:7px;
+      height:18px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius:3px;
+      top:5px;
+      left:4px;
+}
+.LockWord{
+    color:#FF4081;
+    font-size:24px;
+    text-align:center;
+}
+.FormOutBig{
+    position:relative;
+}
+.FormOut{
+    position:relative;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+.FormWord{
+    position: absolute;
+    left:15px;
+    top:5px;
+    font-size:18px;
+    transition:all 0.2s;
+}
+.username,.password{
+    margin-top:5px;
+    width:90%;
+    height:35px;
+    border:none;
+    border-bottom:1px solid #3d3d3d;
+
+}
+.FormSubmit{
+    position:absolute;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#FF4081;
+    color:#fff;
+    z-index:2;
+    right:-30px;
+    bottom:0px;
+    border:none;
+    text-align:left;
+    padding-left:10px;
+}
+.ForgetOut{
+    text-align:center;
+}
+.ForgetPassword{
+    color:#FF4081;
+    font-size:12px;
+}

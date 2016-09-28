@@ -4,8 +4,48 @@
     <meta charset="UTF-8">
     <title></title>
     <!--<script src="js/jquery-1.11.3.js"></script>-->
+    <style>
+        .div1{
+            width:400px;
+            height:400px;
+            background:black;
+            position:relative;
+        }
+        .div2{
+            width:200px;
+            height:200px;
+            background:red;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+        .div3{
+            width:200px;
+            height:200px;
+            vertical-align:middle;
+            background:#faf;
+            display:table-cell;
+        }
+        .div4{
+            width:100px;
+            height:100px;
+            margin:0 auto;
+            background:#aaf;
+        }
+    </style>
 </head>
 <body>
+<div class="div1">
+    <div class="div2"></div>
+</div>
+<div class="div3">
+    <div class="div4">
+
+    </div>
+</div>
 <table class="TreenodeTable" cellpadding="0" cellspacing="0">
     <tr>
 

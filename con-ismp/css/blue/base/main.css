@@ -139,10 +139,12 @@ a:hover{
     border-right:0;
 }
 .MonitorDetailRight{
+    text-align:center;
     height:33%;
     border-bottom:1px solid #2f73b9;
 }
 .MonitorDetailMiddle{
+    text-align:center;
     height:46%;
     border-bottom:1px solid #2f73b9;
 }
@@ -154,8 +156,9 @@ a:hover{
 }
 .monitorname,.MonitorTableDetail{
     width:99%;
-    margin:30px 3px 0 3px;
+    /*margin:30px 3px 0 3px;*/
     text-align:center;
+    overflow:hidden;
 }
 .monitorname tr td{
     height:38px;
@@ -166,3 +169,119 @@ a:hover{
 .MonitorTableDetail th{
     background:#d7d7d7;
 }
+.StrageDateClient,.StrageDateMedia,.AdDateClient,.AdDateMedia,.AdNewsClient,.AdNewsMedia,.exclusionClient,.exclusionMedia,.exclusionideaClient,.exclusionideaMedia{
+    border:1px solid #2f73b9;
+    width:90%;
+    margin:5px auto;
+    display:none;
+
+}
+.StrageDateClient tr td,.AdDateClient tr td,.AdNewsClient tr td,.exclusionClient tr td,.exclusionideaClient tr td ,.StrageDateMedia tr td,.AdDateMedia tr td,.AdNewsMedia tr td,.exclusionMedia tr td,.exclusionideaMedia tr td {
+    height:20px;
+    width:200px;
+    text-align:center;
+    border-top:1px solid #2f73b9;
+    border-left:1px solid #2f73b9;
+}
+.StrageDateClient tr td:first-child,.AdDateClient tr td:first-child,.AdNewsClient tr td:first-child,.exclusionClient tr td:first-child,.exclusionideaClient tr td:first-child,.StrageDateMedia tr td:first-child,.AdDateMedia tr td:first-child,.AdNewsMedia tr td:first-child,.exclusionMedia tr td:first-child,.exclusionideaMedia tr td:first-child{
+    border-left:none;
+}
+.StrageDateClient tr:nth-child(4),.StrageDateMedia tr:nth-child(4){
+    background:#a4e9c1;
+}
+.cheshi{
+    text-align: center;
+    border-bottom:0;
+}
+.cheshi tr td{
+    border-bottom:1px solid #000;
+    border-left:1px solid #000;
+}
+.cheshi tr td:first-child{
+    border-left:none;
+}
+.client_quote_big_button,.client_quote_button{
+    margin-top:20px;
+    width:100px;
+    height:30px;
+    background:#fff;
+}
+.client_quote_button{
+    width:50px;
+}
+.monitorname_client{
+    border:1px solid #aaa;
+    margin:0 auto;
+}
+/*客户报价的样式开始*/
+.client_news{
+    text-align:center;
+    margin:0 auto;
+}
+.client_news tr td{
+    border:1px solid #ddd;
+}
+/*客户报价的样式结束*/
+/*报价类型开始*/
+.offer_type{
+    text-align:center;
+    margin:10px auto;
+    width:90%;
+    border:1px solid #0088CC;
+    display:none;
+}
+.offer_type tr td{
+    border:1px solid #0088CC;
+    border-left:none;
+    border-bottom:none;
+}
+.offer_type tr td:last-child{
+    border-right:none;
+}
+/*报价类型结束*/
+/*put_order样式开始*/
+.put_type_header{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    border:1px solid #0088CC;
+    text-align:center;
+}
+.put_type_artical,.put_type_main{
+    border:1px solid #0088CC;
+    border-top:none;
+    float:left;
+    width:30%;
+}
+.put_type_main{
+    width:70%;
+    border-left:none;
+}
+.put_type_main_out{
+    width:100%;
+    height:70%;
+    border-bottom:1px solid #0088CC;
+}
+.put_type_footer{
+    width:100%;
+    height:30%;
+}
+.put_type_main_out_left,.put_type_main_out_right{
+    float:left;
+    border-right:1px solid #0088CC;
+    width:30%;
+    height:100%;
+}
+.put_type_main_out_right{
+    width:70%;
+    border-right:none;
+}
+.put_type_detail,.put_type_detail2{
+    width:100%;
+    height:50%;
+    border-bottom:1px solid #0088CC;
+}
+.put_type_detail2{
+    border-bottom:none;
+}
+/*put_order样式结束*/

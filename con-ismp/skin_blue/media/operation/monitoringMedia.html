@@ -1,0 +1,614 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link rel="stylesheet" href="../../../css/blue/base/pagebody.css"/>
+    <link rel="stylesheet" href="../../../css/blue/tree.css"/>
+    <link rel="stylesheet" href="../../../css/blue/base/main.css"/>
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../js/layer/layer.js"></script>
+    <script src="../../../tool/My97DatePicker/WdatePicker.js"></script>
+    <title>功能主页面</title>
+</head>
+<style>
+    .monitora{
+        display:inline-block;
+        border:1px solid #2f73b9;
+        width:90px;
+        height:30px;
+        line-height:29px;
+        margin-left:5px;
+        cursor: pointer;
+        text-align: center;
+        background:#fff;
+        border-bottom:none;
+    }
+    select{
+        width:90%;
+    }
+    body .demo-class .layui-layer-title{background:#4476A7; color:#fff; border: none;}
+
+</style>
+<script>
+    function menujson(Numb){
+        var cmenus = [
+            {'id':'100','name':'报表中心','href':'#',
+                'children':[
+                    {"id":'101',"name":'客户日数据','href':'media/appexternal/reportrecday.html'},
+                    {"id":'102',"name":'媒体日数据','href':'media/appexternal/reportresday.html'},
+                    {"id":'103',"name":'客户实时数据','href':'media/appexternal/CustomersRealtimeReports.html'},
+                    {"id":'104',"name":'媒体实时数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'105',"name":'流量日数据','href':'media/appexternal/MediaRealtimeReports.html'},
+                    {"id":'106',"name":'流量实时数据','href':'media/appexternal/MediaRealtimeReports.html'}
+                ]},
+            {"id":"200","name":"媒体管理","href":"#",
+                "children":[{"id":"201","name":"应用审核","href":"media/appaudit/page.html"},
+                    {"id":"202","name":"ad采购报价","href":"media/appaudit/buyprice.html"},
+                    {"id":"203","name":"ad销售报价","href":"media/appaudit/sellprice.html"},
+                    {"id":"204","name":"ad对接留档","href":"media/appaudit/butt.html"},
+                    {"id":"205","name":"应用管理","href":"media/appexternal/page.html"},
+                    {"id":"206","name":"广告位管理","href":"media/appaudit/adpage.html"},
+                    {"id":'207',"name":'客户报价','href':'media/operation/client_quote.html'}
+                ]},
+            {"id":"300","name":"客户管理","href":"#",
+                "children":[{"id":"301","name":"内部普通订单","href":"media/appinterior/internalorder.html"},
+                    {"id":"302","name":"内部余量订单","href":"media/appinterior/remnantorder.html"},
+                    {"id":"303","name":"客户订单","href":"media/appinterior/customerorder.html"},
+                    {"id":"304","name":"广告测试","href":"media/appinterior/adstest.html"}]},
+            {"id":"400","name":"运营中心","href":"#",
+                "children":[{"id":"401","name":"监控","href":"media/operation/monitoring.html"},
+                    {"id":"402","name":"PMP多维报表","href":"#"},
+                    {"id":"403","name":"SSP多维报表","href":'#'},
+                    {"id":"403","name":"运营流量报表","href":'#'},
+                    {"id":"403","name":"运营UV报表","href":'#'}
+                ]},
+            {"id":"500","name":"结算中心","href":"#",
+                "children":[{"id":"501","name":"日结算数据","href":"#"},
+                    {"id":"502","name":"媒体结算","href":"#"},
+                    {"id":"503","name":"客户结算","href":'#'}]},
+            {"id":"600","name":"财务管理","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"},
+                    {"id":"602","name":"媒体用户","href":"#"},
+                    {"id":"603","name":"客户管理","href":"#"}]},
+            {"id":"700","name":"平台用户","href":"#",
+                "children":[{"id":"601","name":"内部员工","href":"media/userplatform/userplatform.html"},
+                    {"id":"602","name":"媒体用户","href":"media/userplatform/usermedia.html"},
+                    {"id":"603","name":"客户管理","href":"media/userplatform/userclient.html"}
+                ]},
+            {"id":"800","name":"信息管理","href":"#",
+                "children":[{"id":"801","name":"留言板","href":"#"},
+                    {"id":"802","name":"信息公告","href":"#"},
+                    {"id":"803","name":"新手帮助","href":"#"},
+                    {"id":"805","name":"服务条款","href":"#"},
+                    {"id":"805","name":"SDK附件","href":"media/infomanage/sdkadjunct.html"}
+                ]},
+            {"id":"900","name":"基础信息","href":"#",
+                "children":[{"id":"901","name":"系统参数","href":"media/baseinfo/ststmargue.html"},
+                    {"id":"902","name":"投放地区","href":"media/baseinfo/putarea.html"},
+                    {"id":"903","name":"数据字典","href":"#"},
+                    {"id":"905","name":"内部职务","href":"#"},
+                    {"id":"905","name":"媒体分类","href":"#"}
+                ]},
+            {"id":"1000","name":"系统管理","href":"#",
+                "children":[{"id":"1001","name":"功能菜单","href":"#"},
+                    {"id":"1002","name":"人员组织","href":"#"},
+                    {"id":"1003","name":"菜单权限","href":"#"},
+                    {"id":"1005","name":"数据权限","href":"#"},
+                    {"id":"1002","name":"系统日志","href":"#"},
+                    {"id":"1003","name":"操作日志","href":"#"}
+                ]}
+
+
+        ];
+        var nav=$(".box" );
+
+        for(var i=0;i<cmenus.length;i++){
+
+            var htmlval='';
+            htmlval =  "<li>"+" <div class='tx'>"+"<a href=''>"+cmenus[i].name+"</a>"+"</div>";
+
+            var childrenval = "";
+            for( var j=0;j<cmenus[i].children.length;j++){
+                if(Numb==1){
+                    childrenval+="<li>"+"<a href='"+'../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==2){
+                    childrenval+="<li>"+"<a href='"+'../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+                if(Numb==3){
+                    childrenval+="<li>"+"<a href='"+'../../../'+cmenus[i].children[j].href+"'>"+cmenus[i].children[j].name+"</a>"+"</li>";
+                }
+
+            }
+            htmlval = htmlval+"<div class='pop'>"+"<ul>" +childrenval+"</ul>"+"</div>"+"</li>";
+
+            nav.append(htmlval);
+        }
+
+    }
+    $(document).ready(function(){
+        $("#suggset,#material,#leave").on("click",function(){
+            layer.open({
+                type: 2,
+                title: '广告位+',
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area : ['800px' , '520px'],
+                content: 'test/iframe.html',
+                skin: 'demo-class'
+            });
+        });
+        var StrageDateJson = [{StrageDate:"2016-09-22",Client  :'宝马',order:'九月份订单',strage:'二线城市策略-洛阳',type:"CPM",Schedule:"288",undone:"100"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'二线城市策略-重庆',type:"CPM",Schedule:"328",undone:"211"},
+            {StrageDate:"2016-09-22",Client:'天猫',order:'九月份订单',strage:'二线城市策略-杭州',type:"CPM",Schedule:"485",undone:"321"},
+            {StrageDate:"2016-09-22",Client:'苏宁',order:'九月份订单',strage:'一线城市策略-深圳',type:"CPM",Schedule:"345",undone:"322"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'一线城市策略-广州',type:"CPM",Schedule:"345",undone:"252"},
+            {StrageDate:"2016-09-22",Client:'宝马',order:'九月份订单',strage:'一线城市策略-北京',type:"CPM",Schedule:"345",undone:"120"},
+            {StrageDate:"2016-09-22",Client:'德芙',order:'九月份订单',strage:'一线城市策略-上海',type:"CPM",Schedule:"345",undone:"215"}];
+        var StrageDate = $(".StrageDateMedia,.StrageDateClient");
+        for(var i =0;i<StrageDateJson.length;i++){
+//        alert(StrageDateJson.length);
+            StrageDate.append(
+                    "<tr>"+"<td>"+StrageDateJson[i].StrageDate+"</td>"+
+                    "<td>"+StrageDateJson[i].Client+"</td>"+
+                    "<td>"+StrageDateJson[i].order+"</td>"+
+                    "<td>"+StrageDateJson[i].strage+"</td>"+
+                    "<td>"+StrageDateJson[i].type+"</td>"+
+                    "<td>"+StrageDateJson[i].Schedule+"</td>"+
+                    "<td>"+StrageDateJson[i].undone+"</td>"+
+                    "</tr>"
+            );
+        }
+        var AdDateJson = [{Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831001",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831002",localpath:'http://lacalhost:8080',Adstate:'媒体已审核',finalurl:"http://baidu.com"},
+            {Client:"宝马",order:"九月订单",strage:'一线城市策略-上海',Adcode:"160831003",localpath:'http://lacalhost:8080',Adstate:'媒体未审核',finalurl:"..."}
+        ];
+        var AdDate = $(".AdDateMedia");
+        for(var j = 0;j<AdDateJson.length;j++){
+            AdDate.append("<tr>"+
+                    "<td>"+AdDateJson[j].Client+"</td>"+
+                    "<td>"+AdDateJson[j].order+"</td>"+
+                    "<td>"+AdDateJson[j].strage+"</td>"+
+                    "<td>"+AdDateJson[j].Adcode+"</td>"+
+                    "<td>"+"<a href=''>"+AdDateJson[j].localpath+"</a>"+"</td>"+
+                    "<td>"+AdDateJson[j].Adstate+"</td>"+
+                    "<td>"+"<a href='#'>"+AdDateJson[j].finalurl+"</a>"+"</td>"+
+                    "</tr>"
+            );
+        }
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        menujson(2);
+        var bigheight= $(window).height();
+        $(".bigone,.bigtwo,.bigthree,.MonitorDetail").height(bigheight-35);
+        var date=new Date();
+      var nowtime = date.toLocaleDateString();
+        $(".nowtime").val(nowtime);
+    })
+</script>
+<body>
+<div class="nav">
+    <div class="allbtn">
+        <h2 class="buttonback" style="text-align:center;"><a href="../../login/welcome.html">主页</a></h2>
+        <ul style="width:190px" class="box">
+        </ul>
+    </div>
+</div>
+<div style="width:100%;height:30px;min-width:500px;">
+    <a name="a" class="monitora" href="monitoring.html" >买量客户</a>
+    <a name="a" class="monitora" >日流量流出</a>
+    <a name="a" class="monitora rf"  style="margin-right:5px;height:31px;border-bottom:0;">放量媒体</a>
+    <a name="a" class="monitora rf" >日流量流入</a>
+</div>
+<div>
+    <div id="d3" name="dv" class="bigthree" style="border:1px solid #2f73b9;margin:0 5px;border-left:none;border-right:none;">
+        <div  class="lf MonitorDetail" style="width:30%;">
+            <div style="border-bottom:1px solid #2f73b9;height:30%;padding-top:30px;overflow:auto">
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">类型</td>
+                        <td width="30%">
+                            <select name="">
+                                <option value="">正常数据</option>
+                            </select>
+                        </td>
+                        <td width="20%">日期</td>
+                        <td><input type="text" size="15" class="Wdate nowtime" onfocus="WdatePicker()"/></td>
+                    </tr>
+                </table>
+                <table class="monitorname" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%">媒体名称</td>
+                        <td width="30%">
+                            <select name="">
+                                <option value="1">-请选择-</option>
+                                <option value="2">暴风影音</option>
+                                <option value="3">搜狐新闻</option>
+                                <option value="4">网易</option>
+                                <option value="5">腾讯</option>
+                            </select>
+                        </td>
+                        <td width="20%">应用名称</td>
+                        <td>
+                            <select name="">
+                                <option value="1">-请选择-</option>
+                                <option value="2">Andriod-暴风影音</option>
+                                <option value="3">Andriod-搜狐新闻</option>
+                                <option value="4">Andriod-网易新闻</option>
+                                <option value="5">Andriod-腾讯</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td>广告位</td>
+                        <td>
+                            <select name="">
+                                <option value="1">-请选择-</option>
+                                <option value="2">Andriod-暴风影音-移动前贴片广告</option>
+                                <option value="3">Andriod-搜狐视频-前贴片</option>
+                                <option value="4">BMW-网易-Mobile</option>
+                                <option value="5">Andriod-暴风影音-移动前贴片广告</option>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button>查询</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="height:70%;padding-top:30px;overflow:auto;">
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="border-bottom:0">
+                    <tr>
+                        <th width="50%" style="text-align:left">媒体-应用-广告位</th>
+                        <th width="20%">级别</th>
+                        <th width="20%">类型</th>
+                    </tr>
+                    <tr>
+                        <td><span class="icon_1" onclick="Click(this)"></span>深圳市微屏互动信息技术有限公司</td>
+                        <td>1媒体</td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>爱奇艺</td>
+                        <td>2应用</td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td colspan="3">
+                            <table width="100%" cellpadding="0" cellspacing="0" class="cheshi">
+                                <tr class="ShowTableMedia andriod">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>>爱奇艺-Android-开屏轮播图</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr class="ShowTableMedia andriod">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>>爱奇艺-Android-开屏轮播图</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr class="ShowTableMedia andriod">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>>爱奇艺-Android-开屏轮播图</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+                <table class="MonitorTableDetail" border="1" cellspacing="0" cellpadding="0" style="margin-top:0">
+                    <tr>
+                        <td width="50%"><span class="icon_1" onclick="Click(this)"></span>百度</td>
+                        <td width="20%">1媒体</td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td><span class="kong"></span><span class="icon_1" onclick="Click(this)"></span>百度地图</td>
+                        <td>2应用</td>
+                        <td></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td colspan="3">
+                            <table width="100%" cellpadding="0" cellspacing="0" class="cheshi">
+                                <tr class="ShowTableMedia ios">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>百度地图-IOS-环球-环球ios-banner</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr class="ShowTableMedia ios">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>百度地图-IOS-环球-环球ios-banner</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr class="ShowTableMedia ios">
+                                    <td width="50%"><span class="kong_1"></span><span class="icon_3"></span>百度地图-IOS-环球-环球ios-banner</td>
+                                    <td width="20%">3广告位</td>
+                                    <td width="20%"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div  class="lf MonitorDetail MD2" style="width:40%;">
+            <div class="MonitorDetailMiddle" style="height:35px;text-align:center;overflow-x: hidden;">
+                <button class="MonitorButton">运行</button>
+                <button class="MonitorButton">暂停</button>
+                <button class="MonitorButton" id="suggset">排期调整</button>
+                <button class="MonitorButton" id="leave">延后补量</button>
+                <button class="MonitorButton" id="material">素材调整</button>
+            </div>
+            <div class="MonitorDetailMiddle" style="overflow:auto;">
+                <h4>本天广告位的所有排期</h4>
+                <table class="StrageDateMedia" id="andriod0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">客户</th>
+                        <th width="10%">订单</th>
+                        <th width="20%">策略</th>
+                        <th width="10%">类型</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">当前已完成数</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="StrageDateMedia" id="ios0" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th width="20%">日期</th>
+                        <th width="10%">客户</th>
+                        <th width="10%">订单</th>
+                        <th width="20%">策略</th>
+                        <th width="10%">类型</th>
+                        <th width="15%">预定数据</th>
+                        <th width="15%">当前已完成数</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="MonitorDetailMiddle" style="border-bottom:none;overflow:auto;">
+                <h4>
+                    本天广告位的所有素材
+                </h4>
+                <table class="AdDateMedia" id="andriod1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th width="20%">策略</th>
+                        <th>创意code</th>
+                        <th>本地路径</th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="AdDateMedia" id="ios1" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>客户</th>
+                        <th>订单</th>
+                        <th width="20%">策略</th>
+                        <th>创意code</th>
+                        <th>本地路径</th>
+                        <th>审核状态</th>
+                        <th>最终路径</th>
+                    </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+        <div  class="lf MonitorDetail" style="width:30%;height:100%;">
+            <div class="MonitorDetailRight" style="overflow:auto;">
+                <h4>广告位信息 </h4>
+                <table class="AdNewsMedia" id="andriod2" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">广告位信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>优酷土豆 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>PC-优土</td>
+                        <td>广告样式</td>
+                        <td>视频</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>640 × 360 </td>
+                        <td>审核状态</td>
+                        <td>是</td>
+                    </tr>
+                </table>
+                <table class="AdNewsMedia" id="ios2" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th colspan="4">广告位信息</th>
+                    </tr>
+                    <tr>
+                        <td>所属媒体</td>
+                        <td>优酷土豆 </td>
+                        <td>所属应用</td>
+                        <td>PC-优土</td>
+                    </tr>
+                    <tr>
+                        <td>广告位名称</td>
+                        <td>PC-优土</td>
+                        <td>广告样式</td>
+                        <td>视频</td>
+                    </tr>
+                    <tr>
+                        <td>视频尺寸</td>
+                        <td>640 × 360 </td>
+                        <td>审核状态</td>
+                        <td>是</td>
+                    </tr>
+                </table>
+
+            </div>
+            <!--<div class="MonitorDetailRight">-->
+                <!--<h4>互斥排期</h4>-->
+                <!--&lt;!&ndash;<table class="exclusionMedia" id="andriod3" cellspacing="0" cellpadding="0">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>序号</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>日期</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>排期</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>单价</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>1</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-01</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2000</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB100.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-11</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>400</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB140.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>3</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-31</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>600</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB130.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                <!--&lt;!&ndash;<table class="exclusionMedia" id="ios3" cellspacing="0" cellpadding="0">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>序号</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>日期</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>排期</th>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th>单价</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>1</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-01</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2000</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB100.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-11</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>400</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB140.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>3</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>2016-08-31</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>600</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>RMB130.00</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--&lt;!&ndash;</table>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="MonitorDetailRight" style="border-bottom:none;">-->
+                <!--<h4>互斥创意 </h4>-->
+                <!--&lt;!&ndash;<table class="exclusionideaMedia" id="andriod4" cellpadding="0" cellspacing="0">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th colspan="4">创意互斥</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>样式</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Banner</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>尺寸(宽x高)</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>320x50</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>购买</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>CPC</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>单价</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>CNY 200.0分(2.0元)</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                <!--&lt;!&ndash;<table class="exclusionideaMedia" id="ios4" cellpadding="0" cellspacing="0">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<th colspan="4">创意互斥</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>样式</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Banner</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>尺寸(宽x高)</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>320x50</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>购买</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>CPC</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>单价</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>CNY 200.0分(2.0元)</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--&lt;!&ndash;</table>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function Click(a){
+        if($(a).is(".icon_1")){
+            $(a).removeClass('icon_1').addClass('icon_2');
+            $(a).parent().parent().next().show();
+        }else{
+            $(a).removeClass('icon_2').addClass('icon_1');
+            $(a).parent().parent().nextAll().hide();
+        }
+
+    }
+//    function show(id,arr){
+//        var as=document.getElementsByName('a');
+//        $(as).css('height','30px');
+//        $(arr).height(30).css("border-bottom","none");
+//        var divs = document.getElementsByName("dv");
+//        for (var i = 0 ; i < divs.length ; i++){
+//            if (divs[i].id == "d"+id ){
+//                divs[i].style.display="";
+//            }else{
+//                divs[i].style.display="none"
+//            }
+//        }
+//    }
+    $(".StrageDate,.AdDate,.AdNews,.exclusion,.exclusionidea").fadeOut();
+    var ShowTablesMedia = $(".ShowTableMedia");
+    ShowTablesMedia.on('click',function(){
+        ShowTablesMedia.css({"background":"","color":""});
+        $(this).css({"background":"#2f73b9","color":"#fff"});
+    });
+    $(".wang").click(function(){
+        $("#zou0,#zou1,#zou2,#zou3,#zou4").hide();
+        $("#wang4,#wang1,#wang2,#wang3,#wang0,#wang02,#wang04").show();
+    });
+    $("#zou").click(function(){
+        $("#wang0,#wang1,#wang2,#wang3,#wang4,#wang02,#wang04").hide();
+        $("#zou0,#zou1,#zou2,#zou3,#zou4").show();
+    });
+    var ShowTablesClient = $(".ShowTableClient");
+    ShowTablesClient.on('click',function(){
+        ShowTablesClient.css({"background":"","color":""});
+        $(this).css({"background":"#2f73b9","color":"#fff"});
+    });
+    $(".andriod").click(function(){
+        $("#andriod0,#andriod1,#andriod2,#andriod3,#andriod4").show();
+        $("#ios0,#ios1,#ios2,#ios3,#ios4").hide();
+    });
+    $(".ios").click(function(){
+        $("#andriod0,#andriod1,#andriod2,#andriod3,#andriod4").hide();
+        $("#ios0,#ios1,#ios2,#ios3,#ios4").show();
+    });
+
+</script>
+</html>

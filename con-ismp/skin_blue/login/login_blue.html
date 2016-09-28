@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/blue/base/login_blue.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <style>
+        /*.LoginClick:checked+.tab+.RegisterClick{*/
+            /*background:red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+  <div class="bg">
+      <img src="../../img/blue/login/bg.jpg" alt=""/>
+  </div>
+   <div class="wrap">
+       <div class="header">
+
+           <input id="tab-1" type="radio" name="tab" class="LoginClick" checked>
+           <label for="tab-1" class="tab" >登录</label>
+           <div class="login">
+               <p class="LoginOut">
+                   <label>用户名</label>
+                   <input type="text" class="username"/>
+               </p>
+
+               <p class="LoginOut">
+                   <label>密码</label>
+                   <input type="password" class="password"/>
+               </p>
+
+               <p class="LoginOut">
+                   <input id="check" type="checkbox" class="RemberPassword"/>
+                   <label for="check"><span class="CheckFan"></span>记住密码</label>
+               </p>
+
+               <p class="LoginOut">
+                   <input type="submit" class="submit" value="登录"/>
+               </p>
+               <hr/>
+               <p class="LoginOut">
+                   <a href="#" class="forget" >忘记密码？</a>
+               </p>
+           </div>
+
+
+           <input id="tab-2" type="radio" name="tab" class="RegisterClick">
+           <label for="tab-2" class="tab">注册</label>
+           <div class="register">
+               <p class="LoginOut">
+                   <label>用户名</label>
+                   <input type="text" class="username"/>
+               </p>
+
+               <p class="LoginOut">
+                   <label>密码</label>
+                   <input type="password" class="password"/>
+               </p>
+
+               <p class="LoginOut">
+                   <label>确认密码</label>
+                   <input type="password" class="password"/>
+               </p>
+
+               <p class="LoginOut">
+                   <input type="submit" class="submit" style="margin-top:20px;" value="注册"/>
+               </p>
+
+               <hr/>
+
+               <p class="LoginOut">
+                   <a href="#" class="forget" >已有账户？</a>
+               </p>
+           </div>
+
+       </div>
+
+   </div>
+</body>
+</html>
