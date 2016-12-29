@@ -42,12 +42,16 @@
 <script>
    $(document).ready(function(){
        $(".username,.password").focus(function(){
-           $(this).css("border-bottom",'2px solid #FF4081');
-           $(this).prev().css({"color":"#FF4081","font-size":"12px","top":'-8px'});
+           $(this).css({"color":"#ff4081","border-bottom":'2px solid #FF4081'});
+           $(this).prev().css({"font-size":"12px","top":'-8px'});
        });
        $(".username,.password").focusout(function(){
-           $(this).css("border-bottom","");
-           $(this).prev().css({"color":"","font-size":"","top":''});
+           if($(this).val()!=""){
+               $(this).prev().css({"font-size":"12px","top":'-8px'});
+           }else{
+               $(this).css("border-bottom","");
+               $(this).prev().css({"color":"","font-size":"","top":''});
+           }
        })
    })
 </script>
