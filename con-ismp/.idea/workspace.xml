@@ -141,11 +141,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login_pink.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login_pink.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/skin_blue/login/login_pink.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33975482">
+            <state vertical-scroll-proportion="-5.388889">
               <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baoma.html" pinned="false" current-in-tab="false">
+        <entry file="file://D:/宝马 易贷 滚图/宝马最终版/baoma.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.79684764">
+              <caret line="89" column="54" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -225,7 +245,6 @@
         <option value="$PROJECT_DIR$/skin_blue/media/appinterior/newstrategy/rule.html" />
         <option value="$PROJECT_DIR$/skin_blue/media/appinterior/newstrategy/next.html" />
         <option value="$PROJECT_DIR$/skin_blue/media/appinterior/strategy/next.html" />
-        <option value="$PROJECT_DIR$/../index.html" />
         <option value="$PROJECT_DIR$/skin_blue/group/welcome.html" />
         <option value="$PROJECT_DIR$/skin_gray/media/appexternal/CustomersRealtimeReports.html" />
         <option value="$PROJECT_DIR$/skin_gray/media/appexternal/reportresday.html" />
@@ -265,6 +284,7 @@
         <option value="$PROJECT_DIR$/skin_blue/media/operation/monitoring.html" />
         <option value="$PROJECT_DIR$/skin_blue/media/operation/client_quote.html" />
         <option value="$PROJECT_DIR$/skin_blue/login/login_pink.html" />
+        <option value="$PROJECT_DIR$/../index.html" />
       </list>
     </option>
   </component>
@@ -625,14 +645,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/skin_blue/media/appinterior/orderA.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/skin_blue/media/appinterior/customerorder.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -659,13 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="427" column="4" selection-start-line="427" selection-start-column="0" selection-end-line="765" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="65" selection-start-line="52" selection-start-column="65" selection-end-line="52" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1094,8 +1099,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/skin_blue/login/login_pink.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33975482">
+        <state vertical-scroll-proportion="-5.388889">
           <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/宝马 易贷 滚图/宝马最终版/baoma.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79684764">
+          <caret line="89" column="54" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
           <folding />
         </state>
       </provider>

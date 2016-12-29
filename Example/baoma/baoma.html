@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="baoma.css"/>
+    <title></title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/dic.js"></script>
+    <script>
+        
+        function subfun(){
+            var key = true;
+            var lastname = $("#lastname").val();
+            if(lastname==null||lastname==''){
+                key =false;
+                $("#lastname").next().show();
+            } else if(!lastname.match(/^([\u4e00-\u9fa5\.]{1,5})$/)){
+                key =false;
+                $("#lastname").next().show();
+            }
+            else{
+                $("#lastname").next().hide();
+            }
+            var firstname = $("#firstname").val();
+            if(firstname==null||firstname==""){
+                key =false;
+                $("#firstname").next().show();
+            }else if(!firstname.match(/^([\u4e00-\u9fa5\.]{1,5})$/)){
+                key =false;
+                $("#firstname").next().show();
+            }
+            else{
+                $("#firstname").next().hide();
+            }
+            var chengwei = $("#chengwei").val();
+            if(chengwei==null||chengwei==""){
+                key =false;
+                $("#chengwei").next().show();
+            }else if(chengwei==1||chengwei==2){
+                $("#chengwei").next().hide();
+            }
+            var phonenumber = $("#phonenumber").val();
+            if(phonenumber==null||phonenumber==""){
+                key =false;
+                $('#phonenumber').next().show();
+            }else if(!phonenumber.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)){
+                key =false;
+                $("#phonenumber").next().show();
+            }
+            else{
+                $("#phonenumber").next().hide();
+            }
+            var BMWline = $("#BMWline").val();
+            if(BMWline==null||BMWline==""){
+                $("#BMWline").next().show();
+            }else{
+                $("#BMWline").next().hide();
+            }
+            var BMWmodel = $("#BMWmodel").val();
+            if(BMWmodel==null||BMWmodel==""){
+                key =false;
+                $("#BMWmodel").next().show();
+            }else{
+                $("#BMWmodel").next().hide();
+            }
+            var BMWtype = $("#BMWtype").val();
+            if(BMWtype==null||BMWtype==''){
+                key =false;
+                $("#BMWtype").next().show();
+            }else{
+                $("#BMWtype").next().hide();
+            }
+            if(!($("#agree").is(':checked'))){
+                key=false;
+                $("#agree").next().next().show();
+            }
+            if(!($("#statecheck").is(':checked'))){
+                key =false;
+                $("#statecheck").next().next().show();
+
+
+            }else{
+                $("#statecheck").next().next().hide();
+            }
+            if(key) {
+                alert(key+"后续请自己处理！");return ;
+                document.getElementById("loginform").submit();
+            }
+         }
+        $(document).ready(function(){
+            $(".testinput,.testselect").focus(function(){
+                $(this).next().hide();
+            });
+            $(".testcheckbox").focus(function(){
+                $(this).next().next().hide();
+            })
+        });
+
+        function funBMWline(o){
+            var id = o.value;
+            var lists = bodyTypeBySeries[id];
+            $("#BMWmodel").empty();
+            $("#BMWmodel").append('<option value="">请选择</option>');
+
+            $.each(lists,function(key,val){
+                $("#BMWmodel").append('<option value="'+val.value+'">'+val.text+'</option>');
+            });
+        }
+
+        function funBMWmodel(o){
+
+            var id = o.value;
+            var lists = modelByBodyType[id];
+            $("#BMWtype").empty();
+            $("#BMWtype").append('<option value="">请选择</option>');
+
+            $.each(lists,function(key,val){
+                $("#BMWtype").append('<option value="'+val.value+'">'+val.text+'</option>');
+            });
+
+        }
+    </script>
+</head>
+<body>
+<div class="banner" style="width:100%;">
+    <img src="img/baoma.png" alt=""/>
+</div>
+<div class="bigdetail" style="float:left;">
+        <div class="wordbig">
+            <p class="wordtitle">预约试驾</p>
+            <p class="worddetail">我们邀您亲身体验BMW的卓越发动机技术，感受澎湃的驾驶动力。</p>
+        </div>
+    <div class="test">
+           <form id="loginform" method="post" action="#">
+            <p  class="testdetail">
+                <label class="testlabel">姓 <b>*</b></label>
+                <input class="testinput" id="lastname" type="text" placeholder="请选择"/>
+                <span  class="ts">请填写您的姓</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">名 <b>*</b></label>
+                <input class="testinput" id="firstname" type="text" placeholder="请选择"/>
+                <span  class="ts">请填写您的名字</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">称谓 <b>*</b></label>
+                <select name="" id="chengwei" class="testselect">
+                    <option value="">请选择</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+                <span  class="ts">请选择您的称谓</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">手机号码 <b>*</b></label>
+                <input class="testinput" id="phonenumber" type="text" placeholder="请选择"/>
+                <span class="ts">请输入手机号码</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">您感兴趣的BMW车系 <b>*</b></label>
+                <select name=""  class="testselect" id="BMWline" onchange="funBMWline(this)">
+                    <option value="">请选择</option>
+                    <option value="1151001">BMW 1系</option>
+                    <option value="1151020">BMW 2系</option>
+                    <option value="1151002">BMW 3系</option>
+                    <option value="1151018">BMW 4系</option>
+                    <option value="1151003">BMW 5系</option>
+                    <option value="1151004">BMW 6系</option>
+                    <option value="1151005">BMW 7系</option>
+                    <option value="1151016">BMW X1</option>
+                    <option value="1151006">BMW X3</option>
+                    <option value="1151021">BMW X4</option>
+                    <option value="1151007">BMW X5</option>
+                    <option value="1151008">BMW X6</option>
+                    <option value="1151009">BMW Z4</option>
+                    <option value="1151013">BMW M</option>
+                    <option value="1151019">BMW i</option>
+                </select>
+                <span class="ts">请选择感兴趣的车系</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">您感兴趣的BMW车型 <b>*</b></label>
+                <select name=""  class="testselect" id="BMWmodel" onchange="funBMWmodel(this)">
+                    <option value="">请选择</option>
+                </select>
+                <span  class="ts">请选择您的感兴趣的车型</span>
+            </p>
+            <p class="testdetail">
+                <label class="testlabel">您感兴趣的BMW型号 <b>*</b></label>
+                <select name=""  class="testselect" id="BMWtype" >
+                    <option value="">请选择</option>
+                </select>
+                <span  class="ts">请选择您感兴趣的车型</span>
+            </p>
+            <p class="testdetail">
+                <input type="checkbox" checked id="agree" class="testcheckbox"/>
+                <label class="checkboxwrod">我同意BMW经销商与我取得联系</label>
+                <span class="ts tscheckbox">同意联系</span>
+            </p>
+            <p class="testdetail">
+                <input type="checkbox" class="testcheckbox" id="statecheck"/>
+                <label class="checkboxwrod">我已阅读并接受数据使用声明* <a style="font-size:12px;color:#2c85da;text-decoration:underline" href="http://www.bmw.com.cn/cn_mobi/zh/general/legal-notes/index.html">法律声明</a></label>
+                <span class="ts tscheckbox">请阅读声明并同意</span>
+            </p>
+            </form>
+            <p class="testdetail"> <button class="testsubmit" onclick="subfun()">提交</button></p>
+
+        </div>
+</div>
+<div style="clear:both;"></div>
+</body>
